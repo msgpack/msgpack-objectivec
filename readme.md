@@ -28,6 +28,7 @@ Authors
 
 * Sugendran Ganess
 * Chris Hulbert
+* Bugfixes by Matzo: https://github.com/Matzo
 
 License
 -------
