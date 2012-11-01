@@ -36,7 +36,9 @@
             for(msgpack_object *p= obj.via.array.ptr;p < pend;p++){
 				id newArrayItem = [self createUnpackedObject:*p];
                 [arr addObject:newArrayItem];
-				[newArrayItem release];
+#if !__has_feature(objc_arc)
+                [newArrayItem release];
+#endif
             }
             return arr;
         }
@@ -49,8 +51,10 @@
                 id key = [self createUnpackedObject:p->key];
                 id val = [self createUnpackedObject:p->val];
                 [dict setValue:val forKey:key];
+#if !__has_feature(objc_arc)
 				[key release];
 				[val release];
+#endif
             }
             return dict;
         }
@@ -69,7 +73,11 @@
 	bool success = msgpack_unpack_next(&msg, data.bytes, data.length, NULL); // Parse it into C-land
 	id results = success ? [self createUnpackedObject:msg.data] : nil; // Convert from C-land to Obj-c-land
 	msgpack_unpacked_destroy(&msg); // Free the parser
+#if !__has_feature(objc_arc)
 	return [results autorelease];
+#else
+    return results;
+#endif
 }
 
 @end
