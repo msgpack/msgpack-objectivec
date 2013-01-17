@@ -84,7 +84,7 @@ static const int kUnpackerBufferSize = 1024;
 #endif
 }
 
-#pragma mark - Stremaing Deserializer
+#pragma mark - Streaming Deserializer
 
 - (id)init {
     return [self initWithBufferSize:kUnpackerBufferSize];
