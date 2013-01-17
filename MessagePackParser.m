@@ -9,7 +9,7 @@
 #import "MessagePackParser.h"
 #include "msgpack_src/msgpack.h"
 
-#define UNPACKER_BUFFER_SIZE 1024
+static const int kUnpackerBufferSize = 1024;
 
 @implementation MessagePackParser {
     msgpack_unpacker unpacker;
@@ -87,7 +87,7 @@
 #pragma mark - Stremaing Deserializer
 
 - (id)init {
-    return [self initWithBufferSize:UNPACKER_BUFFER_SIZE];
+    return [self initWithBufferSize:kUnpackerBufferSize];
 }
 
 - (id)initWithBufferSize:(int)bufferSize {
