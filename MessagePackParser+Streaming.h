@@ -1,6 +1,6 @@
 //
 //  MessagePackParser+Streaming.h
-//  msgpack-objectivec-example
+//  msgpack-objectivec
 //
 //  Created by Kentaro Matsumae on 2013/01/18.
 //  Copyright (c) 2013 kenmaz.net. All rights reserved.
