@@ -7,13 +7,8 @@
 //
 
 #import "MessagePackParser.h"
-#include "msgpack_src/msgpack.h"
 
-static const int kUnpackerBufferSize = 1024;
-
-@implementation MessagePackParser {
-    msgpack_unpacker unpacker;
-}
+@implementation MessagePackParser
 
 // This function returns a parsed object that you have the responsibility to release/autorelease (see 'create rule' in apple docs)
 +(id) createUnpackedObject:(msgpack_object)obj {
@@ -81,44 +76,6 @@ static const int kUnpackerBufferSize = 1024;
 	return [results autorelease];
 #else
     return results;
-#endif
-}
-
-#pragma mark - Streaming Deserializer
-
-- (id)init {
-    return [self initWithBufferSize:kUnpackerBufferSize];
-}
-
-- (id)initWithBufferSize:(int)bufferSize {
-    if (self = [super init]) {
-        msgpack_unpacker_init(&unpacker, bufferSize);
-    }
-    return self;
-}
-
-// Feed chunked messagepack data into buffer.
-- (void)feed:(NSData*)chunk {
-    msgpack_unpacker_reserve_buffer(&unpacker, [chunk length]);
-    memcpy(msgpack_unpacker_buffer(&unpacker), [chunk bytes], [chunk length]);
-    msgpack_unpacker_buffer_consumed(&unpacker, [chunk length]);
-}
-
-// Put next parsed messagepack data. If there is not sufficient data, return nil.
-- (id)next {
-    id unpackedObject;
-    msgpack_unpacked result;
-    msgpack_unpacked_init(&result);
-    if (msgpack_unpacker_next(&unpacker, &result)) {
-        msgpack_object obj = result.data;
-        unpackedObject = [[self class] createUnpackedObject:obj];
-    }
-    msgpack_unpacked_destroy(&result);
-    
-#if !__has_feature(objc_arc)
-    return [unpackedObject autorelease];
-#else
-    return unpackedObject;
 #endif
 }
 
