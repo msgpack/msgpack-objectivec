@@ -37,7 +37,7 @@ static const int kUnpackerBufferSize = 1024;
 
 // Put next parsed messagepack data. If there is not sufficient data, return nil.
 - (id)next {
-    id unpackedObject;
+    id unpackedObject = nil;
     msgpack_unpacked result;
     msgpack_unpacked_init(&result);
     if (msgpack_unpacker_next(&unpacker, &result)) {
