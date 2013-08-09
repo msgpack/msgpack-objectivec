@@ -16,22 +16,106 @@
 	CFNumberType numberType = CFNumberGetType((CFNumberRef)num);
 	switch (numberType)	{
 		case kCFNumberSInt8Type:
-			msgpack_pack_int8(pk, num.shortValue);
+        {
+            switch ([num compare:[NSNumber numberWithUnsignedShort:0]]) {
+                case NSOrderedAscending://signed
+                {
+                    msgpack_pack_int8(pk, num.shortValue);
+                }
+                    break;
+                case NSOrderedSame://0
+                {
+                    msgpack_pack_int8(pk, num.shortValue);
+                }
+                    break;
+                case NSOrderedDescending://unsigned
+                {
+                    msgpack_pack_uint8(pk, num.unsignedShortValue);
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
 			break;
 		case kCFNumberSInt16Type:
 		case kCFNumberShortType:
-			msgpack_pack_int16(pk, num.shortValue);
+        {
+            switch ([num compare:[NSNumber numberWithUnsignedShort:0]]) {
+                case NSOrderedAscending://signed
+                {
+                    msgpack_pack_int16(pk, num.shortValue);
+                }
+                    break;
+                case NSOrderedSame://0
+                {
+                    msgpack_pack_int16(pk, num.shortValue);
+                }
+                    break;
+                case NSOrderedDescending://unsigned
+                {
+                    msgpack_pack_uint16(pk, num.unsignedShortValue);
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
 			break;
 		case kCFNumberSInt32Type:
 		case kCFNumberIntType:
 		case kCFNumberLongType:
 		case kCFNumberCFIndexType:
 		case kCFNumberNSIntegerType:
-			msgpack_pack_int32(pk, num.intValue);
+        {
+            switch ([num compare:[NSNumber numberWithUnsignedInteger:0]]) {
+                case NSOrderedAscending://signed
+                {
+                    msgpack_pack_int32(pk, num.intValue);
+                }
+                    break;
+                case NSOrderedSame://0
+                {
+                    msgpack_pack_int32(pk, num.intValue);
+                }
+                    break;
+                case NSOrderedDescending://unsigned
+                {
+                    msgpack_pack_uint32(pk, num.unsignedIntValue);
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
 			break;
 		case kCFNumberSInt64Type:
 		case kCFNumberLongLongType:
-			msgpack_pack_int64(pk, num.longLongValue);
+        {
+            switch ([num compare:[NSNumber numberWithUnsignedLongLong:0]]) {
+                case NSOrderedAscending://signed
+                {
+                    msgpack_pack_int64(pk, num.longLongValue);
+                }
+                    break;
+                case NSOrderedSame://0
+                {
+                    msgpack_pack_int64(pk, num.longLongValue);
+                }
+                    break;
+                case NSOrderedDescending://unsigned
+                {
+                    msgpack_pack_uint64(pk, num.unsignedLongLongValue);
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
 			break;
 		case kCFNumberFloat32Type:
 		case kCFNumberFloatType:
