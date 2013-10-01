@@ -24,18 +24,18 @@ typedef enum
 }
 
 //parse the data into an NSObject. handle raw bytes as specified:
+// - MPRawsAsNSString_ExceptionOnFail: try to decode the bytes with utf8.
+//   if the decoding fails, raise an exception
 // - MPRawsAsNSString_NSNullOnFail: try to decode the bytes with utf8.
 //   if the decoding fails, put an NSNull in that part of the message.
 // - MPRawsAsNSString_NSDataOnFail: try to decode the bytes with utf8.
 //   if the decoding fails, put an NSData in that part of the message.
-// - MPRawsAsNSString_ExceptionOnFail: try to decode the bytes with utf8.
-//   if the decoding fails, raise an exception
 // - MPRawsAsNSData: always leave bytes as they are, leaving them as
 //   NSDatas.
 
 + (id)parseData:(NSData*)data rawHandling:(MPRawHandling)rawHandling;
 
-//parse the data into an NSObject, handling raws with MPRawsAsNSString_NSNullOnFail
+//parse the data into an NSObject, handling raws with MPRawsAsNSString_ExceptionOnFail
 + (id)parseData:(NSData*)data;
 
 @end

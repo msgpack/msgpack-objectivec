@@ -101,7 +101,7 @@
 
 // Parse the given messagepack data into a NSDictionary or NSArray typically
 + (id)parseData:(NSData*)data {
-    return [self parseData:data rawHandling:MPRawsAsNSString_NSNullOnFail];
+    return [self parseData:data rawHandling:MPRawsAsNSString_ExceptionOnFail];
 }
 
 @end

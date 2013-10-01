@@ -54,7 +54,7 @@ static const int kUnpackerBufferSize = 1024;
 }
 
 - (id)next {
-    return [self nextWith:MPRawsAsNSString_NSNullOnFail];
+    return [self nextWith:MPRawsAsNSString_ExceptionOnFail];
 }
 
 @end
