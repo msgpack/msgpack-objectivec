@@ -12,7 +12,7 @@ static const int kUnpackerBufferSize = 1024;
 
 @interface MessagePackParser ()
 // Implemented in MessagePackParser.m
-+(id) createUnpackedObject:(msgpack_object)obj;
++(id) createUnpackedObject:(msgpack_object)obj rawHandling:(MPRawHandling)rawHandling;
 @end
 
 @implementation MessagePackParser (Streaming)
@@ -36,13 +36,13 @@ static const int kUnpackerBufferSize = 1024;
 }
 
 // Put next parsed messagepack data. If there is not sufficient data, return nil.
-- (id)next {
+- (id)nextWith:(MPRawHandling) rawHandling {
     id unpackedObject;
     msgpack_unpacked result;
     msgpack_unpacked_init(&result);
     if (msgpack_unpacker_next(&unpacker, &result)) {
         msgpack_object obj = result.data;
-        unpackedObject = [MessagePackParser createUnpackedObject:obj];
+        unpackedObject = [MessagePackParser createUnpackedObject:obj rawHandling:rawHandling];
     }
     msgpack_unpacked_destroy(&result);
     
@@ -51,6 +51,10 @@ static const int kUnpackerBufferSize = 1024;
 #else
     return unpackedObject;
 #endif
+}
+
+- (id)next {
+    return [self nextWith:MPRawsAsNSString_NSNullOnFail];
 }
 
 @end

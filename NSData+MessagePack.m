@@ -7,13 +7,21 @@
 //
 
 #import "NSData+MessagePack.h"
-
+#import "MessagePackPacker.h"
 #import "MessagePackParser.h"
 
 @implementation NSData (NSData_MessagePack)
 
+- (NSData*)messagePack {
+	return [MessagePackPacker pack:self];
+}
+
 -(id)messagePackParse {
-	return [MessagePackParser parseData:self];
+    return [MessagePackParser parseData:self];
+}
+
+- (id)messagePackParseWith:(MPRawHandling)rawHandling {
+    return [MessagePackParser parseData:self rawHandling:rawHandling];
 }
 
 @end

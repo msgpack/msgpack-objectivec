@@ -2,7 +2,7 @@ MessagePack for Objective-C / iPhone
 ============
 
 This is a wrapper for the C MessagePack parser, building the bridge to Objective-C.
-In a similar way to the JSON framework, this parses MessagePack into NSDictionaries, NSArrays, NSNumbers, NSStrings, and NSNulls.
+In a similar way to the JSON framework, this parses MessagePack into NSDictionaries, NSArrays, NSNumbers, NSStrings, NSDatas and NSNulls.
 This contains a small patch to the C library so that it doesn't segfault with a byte alignment error when running on the iPhone in armv7 mode.
 Please note that the parser has been extensively tested, however the packer has not been. Please get in touch if it has issues.
 
@@ -12,8 +12,25 @@ Parsing Usage
 	#import "MessagePack.h"
 	...
 	NSData* myData = ...
-	NSDictionary* parsed = [myData messagePackParse];
+	NSDictionary* parsed = [myData messagePackParse]; //decodes raw bytes into NSStrings using UTF8
 	NSLog(@"%@", [parsed description]);
+
+Handling Raw Data
+-----
+
+	NSData* myData = ...
+    
+    //default: try to decode raw bytes into utf8 strings, parse to NSNull on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSNullOnFail];
+
+    //try to decode, parse to NSData of the original bytes on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSDataOnFail];
+
+    //try to decode, raise an exception on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_ExceptionOnFail];
+
+    //always parse to NSData
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_ExceptionOnFail];
 
 Packing Usage
 ----
@@ -22,6 +39,7 @@ Packing Usage
     ..
     NSData* packed = [someArray messagePack];
     NSData* packed = [someDictionary messagePack];
+    NSData* packed = [someData messagePack];
 
 Authors
 -------
@@ -29,6 +47,7 @@ Authors
 * Sugendran Ganess
 * Chris Hulbert
 * Bugfixes by Matzo: https://github.com/Matzo
+* NSData handling by csaftoiu: https://github.com/csaftoiu
 
 License
 -------
