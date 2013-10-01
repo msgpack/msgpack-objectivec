@@ -24,4 +24,18 @@
     return [MessagePackParser parseData:self rawHandling:rawHandling];
 }
 
++ (NSData *)expectData:(id) dataOrString {
+    if ([dataOrString isKindOfClass:[NSData class]]) {
+        return dataOrString;
+    }
+    else if ([dataOrString isKindOfClass:[NSString class]]) {
+        return [dataOrString dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    else {
+        [NSException raise:@"Unexpected object in message"
+                    format:@"Expected data or string, not %@", dataOrString];
+        return nil; //suppress warning
+    }
+}
+
 @end

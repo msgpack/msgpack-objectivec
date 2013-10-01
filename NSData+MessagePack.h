@@ -23,4 +23,9 @@
 // without decoding raw bytes into utf8 strings
 - (id)messagePackParseWith:(MPRawHandling)rawHandling;
 
+// If obj is NSData, return obj. If obj is NSString, return
+// NSData of the utf8-encoded bytes. Otherwise, raise an exception.
+// useful when using MPRawsAsNSString_NSDataOnFail
++ (NSData *)expectData:(id) obj;
+
 @end
