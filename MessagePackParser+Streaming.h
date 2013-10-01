@@ -14,6 +14,7 @@
 - (id)init;
 - (id)initWithBufferSize:(int)bufferSize;
 - (void)feed:(NSData*)rawData;
+- (id)nextWith:(MPRawHandling)rawHandling;
 - (id)next;
 
 @end

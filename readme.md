@@ -2,7 +2,7 @@ MessagePack for Objective-C / iPhone
 ============
 
 This is a wrapper for the C MessagePack parser, building the bridge to Objective-C.
-In a similar way to the JSON framework, this parses MessagePack into NSDictionaries, NSArrays, NSNumbers, NSStrings, and NSNulls.
+In a similar way to the JSON framework, this parses MessagePack into NSDictionaries, NSArrays, NSNumbers, NSStrings, NSDatas and NSNulls.
 This contains a small patch to the C library so that it doesn't segfault with a byte alignment error when running on the iPhone in armv7 mode.
 Please note that the parser has been extensively tested, however the packer has not been. Please get in touch if it has issues.
 
@@ -15,6 +15,29 @@ Parsing Usage
 	NSDictionary* parsed = [myData messagePackParse];
 	NSLog(@"%@", [parsed description]);
 
+Handling Raw Data
+-----
+
+When using `messagePackParse`, bytes are decoded with utf8 and parsed into `NSString`s, and an exception is raised if that encoding is invalid. This behavior can be changed as follows:
+
+	NSData* myData = ...
+    
+    //try to decode, parse to NSData of the original bytes on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSDataOnFail];
+
+    //try to decode raw bytes into utf8 strings, parse to NSNull on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSNullOnFail];
+
+    //always parse to NSData
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSData];
+
+    //(same as `messagePackParse`): try to decode, raise an exception on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_ExceptionOnFail];
+
+    //if using MPRawsAsNSString_NSDataOnFail, NSData+MessagePack.h provides a useful
+    //helper function when you expect bytes, just in case they were valid utf8 bytes.
+    NSData *data = [NSData expectData:[parsed objectForKey:@"bytes"]];
+
 Packing Usage
 ----
 
@@ -22,6 +45,7 @@ Packing Usage
     ..
     NSData* packed = [someArray messagePack];
     NSData* packed = [someDictionary messagePack];
+    NSData* packed = [someData messagePack];
 
 Authors
 -------
@@ -29,6 +53,7 @@ Authors
 * Sugendran Ganess
 * Chris Hulbert
 * Bugfixes by Matzo: https://github.com/Matzo
+* NSData handling by csaftoiu: https://github.com/csaftoiu
 
 License
 -------
