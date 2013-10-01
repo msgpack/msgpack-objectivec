@@ -12,17 +12,16 @@ Parsing Usage
 	#import "MessagePack.h"
 	...
 	NSData* myData = ...
-	NSDictionary* parsed = [myData messagePackParse]; //decodes raw bytes into NSStrings using UTF8
+	NSDictionary* parsed = [myData messagePackParse];
 	NSLog(@"%@", [parsed description]);
 
 Handling Raw Data
 -----
 
+When using `messagePackParse`, bytes are decoded with utf8 and parsed into `NSString`s, and an exception is raised if that encoding is invalid. This behavior can be changed as follows:
+
 	NSData* myData = ...
     
-    //default: try to decode, raise an exception on fail
-	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_ExceptionOnFail];
-
     //try to decode, parse to NSData of the original bytes on fail
 	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSDataOnFail];
 
@@ -31,6 +30,9 @@ Handling Raw Data
 
     //always parse to NSData
 	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSData];
+
+    //(same as `messagePackParse`): try to decode, raise an exception on fail
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_ExceptionOnFail];
 
     //if using MPRawsAsNSString_NSDataOnFail, NSData+MessagePack.h provides a useful
     //helper function when you expect bytes, just in case they were valid utf8 bytes.
