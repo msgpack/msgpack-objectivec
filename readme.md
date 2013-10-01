@@ -26,11 +26,11 @@ Handling Raw Data
     //try to decode, parse to NSData of the original bytes on fail
 	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSDataOnFail];
 
-    //always parse to NSData
-	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_ExceptionOnFail];
-
     //try to decode raw bytes into utf8 strings, parse to NSNull on fail
 	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSString_NSNullOnFail];
+
+    //always parse to NSData
+	NSDictionary *parsed = [myData messagePackParseWith:MPRawsAsNSData];
 
     //if using MPRawsAsNSString_NSDataOnFail, NSData+MessagePack.h provides a useful
     //helper function when you expect bytes, just in case they were valid utf8 bytes.
