@@ -34,7 +34,7 @@ Handling Raw Data
 
     //if using MPRawsAsNSString_NSDataOnFail, NSData+MessagePack.h provides a useful
     //helper function when you expect bytes, just in case they were valid utf8 bytes.
-    NSData *data = [NSData expectData:[parsed objectForKey:@"bytes"];
+    NSData *data = [NSData expectData:[parsed objectForKey:@"bytes"]];
 
 Packing Usage
 ----
