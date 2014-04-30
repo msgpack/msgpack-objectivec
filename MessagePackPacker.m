@@ -79,6 +79,9 @@
 		[self packNumber:obj into:pk];
 	} else if (obj==[NSNull null]) {
 		msgpack_pack_nil(pk);
+	} else if ([obj isKindOfClass:[NSData class]]) {
+		msgpack_pack_raw(pk, [obj length]);
+		msgpack_pack_raw_body(pk, [obj bytes], [obj length]);
 	} else {
 		NSLog(@"Could not messagepack object: %@", obj);
 	}
