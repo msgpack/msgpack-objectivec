@@ -18,4 +18,10 @@
 
 - (void) writeData:(NSData *) data;
 
+- (void) writeNumber:(NSNumber *) data;
+
+- (void) writeNull;
+
+- (void) writeObject:(NSObject *) data;
+
 @end
