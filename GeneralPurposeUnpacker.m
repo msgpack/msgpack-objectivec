@@ -19,9 +19,7 @@
 
 @implementation GeneralPurposeUnpacker
 
-/**
- * Prepares msgpack_unpacked instance for parsing the data.
- */
+// Prepares msgpack_unpacked instance for parsing the data.
 - (id)initWithData:(NSData *)data
 {
     if (self = [super init]) {
@@ -32,11 +30,6 @@
     return self;
 }
 
-/**
- * Reads the next object from the packed message. The result is automatically converted into NSNumber, NSString, NSDictionary, NSArray or NSNull.
- *
- * @return The object that was read, or nil.
- */
 - (id)readNext
 {
     id result = nil;
@@ -44,20 +37,61 @@
         result = [GeneralPurposeUnpacker createUnpackedObject:_msg.data];
     }
 #if !__has_feature(objc_arc)
-	return [result autorelease];
+    return [result autorelease];
 #else
     return result;
 #endif
 }
 
-/**
- * @return NSData with the next raw bytes
- */
 - (NSData *)readNextRaw
 {
     id result = nil;
     if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
-        result = [[NSData alloc] initWithBytes:_msg.data.via.raw.ptr length:_msg.data.via.raw.size];
+        if (_msg.data.type == MSGPACK_OBJECT_RAW) {
+            result = [[NSData alloc] initWithBytes:_msg.data.via.raw.ptr length:_msg.data.via.raw.size];
+        }
+    }
+#if !__has_feature(objc_arc)
+    return [result autorelease];
+#else
+    return result;
+#endif
+}
+
+- (NSString *)readNextString
+{
+    id result = nil;
+    if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
+        if (_msg.data.type == MSGPACK_OBJECT_RAW) {
+            result = [[NSString alloc] initWithBytes:_msg.data.via.raw.ptr length:_msg.data.via.raw.size encoding:NSUTF8StringEncoding];
+        }
+    }
+#if !__has_feature(objc_arc)
+    return [result autorelease];
+#else
+    return result;
+#endif
+}
+
+- (NSNumber *)readNextNumber
+{
+    id result = nil;
+    if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
+        switch (_msg.data.type) {
+            case MSGPACK_OBJECT_BOOLEAN:
+                result = [[NSNumber alloc] initWithBool:_msg.data.via.boolean];
+                break;
+            case MSGPACK_OBJECT_POSITIVE_INTEGER:
+                result = [[NSNumber alloc] initWithUnsignedLongLong:_msg.data.via.u64];
+                break;
+            case MSGPACK_OBJECT_NEGATIVE_INTEGER:
+                result = [[NSNumber alloc] initWithLongLong:_msg.data.via.i64];
+                break;
+            case MSGPACK_OBJECT_DOUBLE:
+                result = [[NSNumber alloc] initWithDouble:_msg.data.via.dec];
+                break;
+            default:; // nothing to do
+        }
     }
 #if !__has_feature(objc_arc)
     return [result autorelease];
@@ -68,7 +102,7 @@
 
 - (void)destroy
 {
-	msgpack_unpacked_destroy(&_msg); // Free the parser
+    msgpack_unpacked_destroy(&_msg); // Free the parser
     return;
 }
 
@@ -96,7 +130,7 @@
             NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:obj.via.array.size];
             msgpack_object* const pend = obj.via.array.ptr + obj.via.array.size;
             for(msgpack_object *p= obj.via.array.ptr;p < pend;p++){
-				id newArrayItem = [self createUnpackedObject:*p];
+                id newArrayItem = [self createUnpackedObject:*p];
                 [arr addObject:newArrayItem];
 #if !__has_feature(objc_arc)
                 [newArrayItem release];
@@ -114,8 +148,8 @@
                 id val = [self createUnpackedObject:p->val];
                 [dict setValue:val forKey:key];
 #if !__has_feature(objc_arc)
-				[key release];
-				[val release];
+                [key release];
+                [val release];
 #endif
             }
             return dict;
