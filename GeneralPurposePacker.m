@@ -18,9 +18,6 @@
 
 @implementation GeneralPurposePacker
 
-/**
- * Prepares msgpack_sbuffer and msgpack_packer instance for writing.
- */
 - (id)init 
 {
     if (self = [super init]) {
@@ -31,9 +28,6 @@
     return self;
 }
 
-/**
- * Converts the msgpack data into NSData, and frees the msgppack_sbuffer and msgpack_packer instances.
- */
 - (NSData *)flush
 {
     // Bridge the data back to data-c's world
@@ -132,7 +126,7 @@
     }
 }
 
-- (void) writeNull
+- (void)writeNull
 {
     msgpack_pack_nil(_packer);
 }

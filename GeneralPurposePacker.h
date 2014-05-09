@@ -10,18 +10,22 @@
 
 @interface GeneralPurposePacker : NSObject
 
-- (id) init;
+/* Initializes the msgpack objects in C-land. Remember to call flush when you are done!
+*/
+- (id)init;
 
-- (NSData *) flush;
+/* Converts the msgpack data into NSData, and frees the msgppack_sbuffer and msgpack_packer instances.
+*/
+- (NSData *)flush;
 
-- (void) writeString:(NSString *) data;
+- (void)writeString:(NSString *)data;
 
-- (void) writeData:(NSData *) data;
+- (void)writeData:(NSData *)data;
 
-- (void) writeNumber:(NSNumber *) data;
+- (void)writeNumber:(NSNumber *)data;
 
-- (void) writeNull;
+- (void)writeNull;
 
-- (void) writeObject:(NSObject *) data;
+- (void)writeObject:(NSObject *)data;
 
 @end
