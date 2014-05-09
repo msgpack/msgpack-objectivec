@@ -14,6 +14,8 @@
 
 - (id)readNext;
 
+- (NSData *)readNextRaw;
+
 - (void)destroy;
 
 @end

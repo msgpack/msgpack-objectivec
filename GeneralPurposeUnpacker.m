@@ -12,6 +12,7 @@
 @interface GeneralPurposeUnpacker ()
 
 @property NSData *data;
+@property size_t offset;
 @property msgpack_unpacked msg;
 
 @end
@@ -19,36 +20,61 @@
 @implementation GeneralPurposeUnpacker
 
 /**
- * Prepares msgpack_sbuffer and msgpack_packer instance for writing.
+ * Prepares msgpack_unpacked instance for parsing the data.
  */
-- (id)initWithData:(NSData *)data {
+- (id)initWithData:(NSData *)data
+{
     if (self = [super init]) {
         _data = data;
+        _offset = 0;
         msgpack_unpacked_init(&_msg);
     }
     return self;
 }
 
-- (id)readNext; {
-    // Parse it into C-land
-    size_t offset = 0;
-    bool success = msgpack_unpack_next(&_msg, _data.bytes, _data.length, &offset);
-    // Convert from C-land to Obj-c-land
-	id results = success ? [GeneralPurposeUnpacker createUnpackedObject:_msg.data] : nil;
+/**
+ * Reads the next object from the packed message. The result is automatically converted into NSNumber, NSString, NSDictionary, NSArray or NSNull.
+ *
+ * @return The object that was read, or nil.
+ */
+- (id)readNext
+{
+    id result = nil;
+    if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
+        result = [GeneralPurposeUnpacker createUnpackedObject:_msg.data];
+    }
 #if !__has_feature(objc_arc)
-	return [results autorelease];
+	return [result autorelease];
 #else
-    return results;
+    return result;
 #endif
 }
 
-- (void)destroy {
-	msgpack_unpacked_destroy(&_msg); // Free the parserr
+/**
+ * @return NSData with the next raw bytes
+ */
+- (NSData *)readNextRaw
+{
+    id result = nil;
+    if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
+        result = [[NSData alloc] initWithBytes:_msg.data.via.raw.ptr length:_msg.data.via.raw.size];
+    }
+#if !__has_feature(objc_arc)
+    return [result autorelease];
+#else
+    return result;
+#endif
+}
+
+- (void)destroy
+{
+	msgpack_unpacked_destroy(&_msg); // Free the parser
     return;
 }
 
 // This function returns a parsed object that you have the responsibility to release/autorelease (see 'create rule' in apple docs)
-+ (id)createUnpackedObject:(msgpack_object)obj {
++ (id)createUnpackedObject:(msgpack_object)obj
+{
     switch (obj.type) {
         case MSGPACK_OBJECT_BOOLEAN:
             return [[NSNumber alloc] initWithBool:obj.via.boolean];
