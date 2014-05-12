@@ -7,7 +7,7 @@
 //
 
 #import "MessagePackParser.h"
-#include "GeneralPurposeParser.h"
+#import "GeneralPurposeParser.h"
 
 @implementation MessagePackParser
 
