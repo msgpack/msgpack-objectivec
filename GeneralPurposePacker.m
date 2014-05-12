@@ -104,23 +104,23 @@
 {
     if ([data isKindOfClass:[NSArray class]]) {
         msgpack_pack_array(_packer, ((NSArray *) data).count);
-        for (id arrayElement in data) {
+        for (id arrayElement in (NSArray*)data) {
             [self writeObject:arrayElement];
         }
     } else if ([data isKindOfClass:[NSDictionary class]]) {
         msgpack_pack_map(_packer, ((NSDictionary *) data).count);
-        for(id key in data) {
+        for(id key in (NSDictionary *)data) {
             [self writeObject:key];
-            [self writeObject:[data objectForKey:key]];
+            [self writeObject:[(NSDictionary *)data objectForKey:key]];
         }
     } else if ([data isKindOfClass:[NSString class]]) {
-        [self writeString:data];
+        [self writeString:(NSString *)data];
     } else if ([data isKindOfClass:[NSNumber class]]) {
-        [self writeNumber:data];
+        [self writeNumber:(NSNumber *)data];
     } else if (data==[NSNull null]) {
         [self writeNull];
     } else if ([data isKindOfClass:[NSData class]]) {
-        [self writeData:data];
+        [self writeData:(NSData *)data];
     } else {
         NSLog(@"Could not msgpack object: %@", data);
     }
