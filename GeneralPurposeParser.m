@@ -1,15 +1,15 @@
 //
-//  GeneralPurposeUnpacker.h
+//  GeneralPurposeParser.m
 //  MessagePack
 //
 //  Created by Steven Mulder on 5/8/14.
 //
 //
 
-#import "GeneralPurposeUnpacker.h"
+#import "GeneralPurposeParser.h"
 #include "msgpack_src/msgpack.h"
 
-@interface GeneralPurposeUnpacker ()
+@interface GeneralPurposeParser ()
 
 @property NSData *data;
 @property size_t offset;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation GeneralPurposeUnpacker
+@implementation GeneralPurposeParser
 
 // Prepares msgpack_unpacked instance for parsing the data.
 - (id)initWithData:(NSData *)data
@@ -34,7 +34,7 @@
 {
     id result = nil;
     if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
-        result = [GeneralPurposeUnpacker createUnpackedObject:_msg.data];
+        result = [GeneralPurposeParser createUnpackedObject:_msg.data];
     }
 #if !__has_feature(objc_arc)
     return [result autorelease];

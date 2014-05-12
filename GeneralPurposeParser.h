@@ -1,6 +1,6 @@
 //
-//  GeneralPurposeUnpacker.h
-//  MessagePack
+//  GeneralPurposeParser.h
+//  msgpack-objectivec
 //
 //  Created by Steven Mulder on 5/8/14.
 //
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GeneralPurposeUnpacker : NSObject
+@interface GeneralPurposeParser : NSObject
 
 /* Initializes the msgpack objects in C-land. Remember to call destroy when you are done!
 */
