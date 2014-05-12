@@ -7,15 +7,19 @@
 //
 
 #import "MessagePackParser+Streaming.h"
+#import "GeneralPurposeParser.h"
+#include "msgpack_src/msgpack.h"
 
 static const int kUnpackerBufferSize = 1024;
 
-@interface MessagePackParser ()
-// Implemented in MessagePackParser.m
+@interface GeneralPurposeParser ()
+// Implemented in GeneralPurposeParser.m
 +(id) createUnpackedObject:(msgpack_object)obj;
 @end
 
 @implementation MessagePackParser (Streaming)
+
+msgpack_unpacker unpacker;
 
 - (id)init {
     return [self initWithBufferSize:kUnpackerBufferSize];
@@ -37,12 +41,12 @@ static const int kUnpackerBufferSize = 1024;
 
 // Put next parsed messagepack data. If there is not sufficient data, return nil.
 - (id)next {
-    id unpackedObject;
+    id unpackedObject = nil;
     msgpack_unpacked result;
     msgpack_unpacked_init(&result);
     if (msgpack_unpacker_next(&unpacker, &result)) {
         msgpack_object obj = result.data;
-        unpackedObject = [MessagePackParser createUnpackedObject:obj];
+        unpackedObject = [GeneralPurposeParser createUnpackedObject:obj];
     }
     msgpack_unpacked_destroy(&result);
     
