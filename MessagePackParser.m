@@ -17,6 +17,7 @@
 	GeneralPurposeParser *parser = [[GeneralPurposeParser alloc] initWithData:data];
     id results = [parser readNext];
     [parser destroy];
+    [parser autorelease];
     return results;
 }
 
