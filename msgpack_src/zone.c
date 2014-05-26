@@ -63,6 +63,7 @@ static inline void clear_chunk_list(msgpack_zone_chunk_list* cl, size_t chunk_si
 			free(c);
 			c = n;
 		} else {
+			cl->head = c;
 			break;
 		}
 	}
@@ -83,9 +84,8 @@ void* msgpack_zone_malloc_expand(msgpack_zone* zone, size_t size)
 
 	msgpack_zone_chunk* chunk = (msgpack_zone_chunk*)malloc(
 			sizeof(msgpack_zone_chunk) + sz);
-
+	if (chunk == NULL)  return NULL;
 	char* ptr = ((char*)chunk) + sizeof(msgpack_zone_chunk);
-
 	chunk->next = cl->head;
 	cl->head = chunk;
 	cl->free = sz - size;
