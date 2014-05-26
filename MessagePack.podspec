@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'MessagePack'
-  s.version  = '1.2.4'
+  s.version  = '1.2.5'
   s.license  = 'Apache License, Version 2.0'
   s.summary  = 'Extremely efficient object serialization library. It\'s like JSON, but very fast and small.'
   s.description = <<-DESC
@@ -15,7 +15,7 @@ it has issues.
   s.homepage = 'https://github.com/msgpack/msgpack-objectivec'
   s.author   = { 'Chris Hulbert' => 'chris.hulbert@gmail.com' }
   s.source   = { :git => 'https://github.com/xebia/msgpack-objectivec.git',
-                 :tag => '1.2.4' }
+                 :tag => '1.2.5' }
   s.source_files = '*.{h,m}', 'msgpack_src/*.{c,h}', 'msgpack_src/msgpack/*.h'
   s.requires_arc = false
 end
