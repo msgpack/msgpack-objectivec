@@ -34,7 +34,7 @@
 {
     id result = nil;
     if (msgpack_unpack_next(&_msg, _data.bytes, _data.length, &_offset)) {
-        result = [GeneralPurposeParser createUnpackedObject:_msg.data];
+        result = [GeneralPurposeParser copyUnpackedObject:_msg.data];
     }
 #if !__has_feature(objc_arc)
     return [result autorelease];
@@ -107,7 +107,7 @@
 }
 
 // This function returns a parsed object that you have the responsibility to release/autorelease (see 'create rule' in apple docs)
-+ (id)createUnpackedObject:(msgpack_object)obj
++ (id)copyUnpackedObject:(msgpack_object)obj
 {
     switch (obj.type) {
         case MSGPACK_OBJECT_BOOLEAN:
@@ -130,7 +130,7 @@
             NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:obj.via.array.size];
             msgpack_object* const pend = obj.via.array.ptr + obj.via.array.size;
             for(msgpack_object *p= obj.via.array.ptr;p < pend;p++){
-                id newArrayItem = [self createUnpackedObject:*p];
+                id newArrayItem = [GeneralPurposeParser copyUnpackedObject:*p];
                 [arr addObject:newArrayItem];
 #if !__has_feature(objc_arc)
                 [newArrayItem release];
@@ -144,8 +144,8 @@
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:obj.via.map.size];
             msgpack_object_kv* const pend = obj.via.map.ptr + obj.via.map.size;
             for(msgpack_object_kv* p = obj.via.map.ptr; p < pend; p++){
-                id key = [self createUnpackedObject:p->key];
-                id val = [self createUnpackedObject:p->val];
+                id key = [GeneralPurposeParser copyUnpackedObject:p->key];
+                id val = [GeneralPurposeParser copyUnpackedObject:p->val];
                 [dict setValue:val forKey:key];
 #if !__has_feature(objc_arc)
                 [key release];
@@ -157,7 +157,7 @@
             break;
         case MSGPACK_OBJECT_NIL:
         default:
-            return [NSNull null]; // Since nsnull is a system singleton, we don't have to worry about ownership of it
+            return nil;
             break;
     }
 }

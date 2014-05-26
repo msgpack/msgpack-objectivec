@@ -14,7 +14,7 @@ static const int kUnpackerBufferSize = 1024;
 
 @interface GeneralPurposeParser ()
 // Implemented in GeneralPurposeParser.m
-+(id) createUnpackedObject:(msgpack_object)obj;
++ (id)copyUnpackedObject:(msgpack_object)obj;
 @end
 
 @implementation MessagePackParser (Streaming)
@@ -46,7 +46,7 @@ msgpack_unpacker unpacker;
     msgpack_unpacked_init(&result);
     if (msgpack_unpacker_next(&unpacker, &result)) {
         msgpack_object obj = result.data;
-        unpackedObject = [GeneralPurposeParser createUnpackedObject:obj];
+        unpackedObject = [GeneralPurposeParser copyUnpackedObject:obj];
     }
     msgpack_unpacked_destroy(&result);
     
