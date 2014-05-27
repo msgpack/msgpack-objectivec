@@ -72,7 +72,7 @@
 		}
 	} else if ([obj isKindOfClass:[NSString class]]) {
 		const char *str = ((NSString*)obj).UTF8String;
-		int len = strlen(str);
+		unsigned long len = strlen(str);
 		msgpack_pack_raw(pk, len);
 		msgpack_pack_raw_body(pk, str, len);
 	} else if ([obj isKindOfClass:[NSNumber class]]) {

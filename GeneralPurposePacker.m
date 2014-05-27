@@ -43,7 +43,7 @@
 - (void)writeString:(NSString *)data
 {
     const char *str = data.UTF8String;
-    int len = strlen(str);
+    unsigned long len = strlen(str);
     msgpack_pack_raw(_packer, len);
     msgpack_pack_raw_body(_packer, str, len);
 }
