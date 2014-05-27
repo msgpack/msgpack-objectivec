@@ -16,8 +16,9 @@
 {
 	GeneralPurposeParser *parser = [[GeneralPurposeParser alloc] initWithData:data];
     id results = [parser readNext];
-    [parser destroy];
+#if !__has_feature(objc_arc)
     [parser autorelease];
+#endif
     return results;
 }
 

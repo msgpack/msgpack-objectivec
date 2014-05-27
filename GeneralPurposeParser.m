@@ -100,10 +100,12 @@
 #endif
 }
 
-- (void)destroy
+- (void)dealloc
 {
     msgpack_unpacked_destroy(&_msg); // Free the parser
-    return;
+#if !__has_feature(objc_arc)
+    [super dealloc];
+#endif
 }
 
 // This function returns a parsed object that you have the responsibility to release/autorelease (see 'create rule' in apple docs)
