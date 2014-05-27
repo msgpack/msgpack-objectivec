@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name     = 'MessagePack'
   s.version  = '1.2.5'
-  s.license  = 'Apache License, Version 2.0'
+  s.license  = { :type => 'Apache License, Version 2.0', :file => 'LICENSE-2.0.txt' }
   s.summary  = 'Extremely efficient object serialization library. It\'s like JSON, but very fast and small.'
   s.description = <<-DESC
 This is a wrapper for the C MessagePack parser, building the bridge to
