@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A7F0C83197DD4B600BA923E"
-               BuildableName = "MessagePack-dynamic.dylib"
-               BlueprintName = "MessagePack-dynamic"
+               BlueprintIdentifier = "9A7F0CD0197DD70500BA923E"
+               BuildableName = "libMessagePack-static.a"
+               BlueprintName = "MessagePack-static"
                ReferencedContainer = "container:MessagePack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A7F0C8F197DD4B600BA923E"
-               BuildableName = "MessagePack-dynamicTests.xctest"
-               BlueprintName = "MessagePack-dynamicTests"
+               BlueprintIdentifier = "9A7F0CDC197DD70500BA923E"
+               BuildableName = "MessagePack-staticTests.xctest"
+               BlueprintName = "MessagePack-staticTests"
                ReferencedContainer = "container:MessagePack.xcodeproj">
             </BuildableReference>
          </TestableReference>
