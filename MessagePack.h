@@ -1,6 +1,8 @@
 #ifndef MessagePack_MessagePack_h
 #define MessagePack_MessagePack_h
 
+#import "NSNumber+MessagePack.h"
+#import "NSString+MessagePack.h"
 #import "NSData+MessagePack.h"
 #import "NSDictionary+MessagePack.h"
 #import "NSArray+MessagePack.h"
