@@ -20,7 +20,30 @@
 		9AE2E592197DB604003D23B6 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E544197DB492003D23B6 /* version.c */; };
 		9AE2E593197DB604003D23B6 /* vrefbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E545197DB492003D23B6 /* vrefbuffer.c */; };
 		9AE2E594197DB604003D23B6 /* zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E546197DB492003D23B6 /* zone.c */; };
+		9AE2E595197DB73C003D23B6 /* MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E52A197DB492003D23B6 /* MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E596197DB73C003D23B6 /* MessagePackPacker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E52B197DB492003D23B6 /* MessagePackPacker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E597197DB73C003D23B6 /* MessagePackParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E52D197DB492003D23B6 /* MessagePackParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E598197DB73C003D23B6 /* MessagePackParser+Streaming.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E52F197DB492003D23B6 /* MessagePackParser+Streaming.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E599197DB73C003D23B6 /* NSArray+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E547197DB492003D23B6 /* NSArray+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E59A197DB73C003D23B6 /* NSData+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E549197DB492003D23B6 /* NSData+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E59B197DB73C003D23B6 /* NSDictionary+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E54B197DB492003D23B6 /* NSDictionary+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AE2E59C197DB8A1003D23B6 /* msgpack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E541197DB492003D23B6 /* msgpack.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9AE2E59F197DB8FB003D23B6 /* NSString+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */; };
+		9AE2E5A0197DB8FB003D23B6 /* NSString+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */; };
+		9AE2E5A6197DBA5D003D23B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C210F197DB25600A86F36 /* XCTest.framework */; };
+		9AE2E5AC197DBA5D003D23B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2E5AA197DBA5D003D23B6 /* InfoPlist.strings */; };
+		9AE2E5AE197DBA5D003D23B6 /* MessagePack_framework_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5AD197DBA5D003D23B6 /* MessagePack_framework_Tests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AE2E5B0197DBA5D003D23B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A3C20EE197DB25600A86F36 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AE2E551197DB4D6003D23B6;
+			remoteInfo = "MessagePack-framework";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9A3C20FA197DB25600A86F36 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -65,6 +88,13 @@
 		9AE2E556197DB4D6003D23B6 /* MessagePack-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MessagePack-Info.plist"; sourceTree = "<group>"; };
 		9AE2E558197DB4D6003D23B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AE2E55A197DB4D6003D23B6 /* MessagePack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagePack-Prefix.pch"; sourceTree = "<group>"; };
+		9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MessagePack.h"; path = "../NSString+MessagePack.h"; sourceTree = "<group>"; };
+		9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MessagePack.m"; path = "../NSString+MessagePack.m"; sourceTree = "<group>"; };
+		9AE2E5A5197DBA5D003D23B6 /* MessagePack-framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePack-framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AE2E5A9197DBA5D003D23B6 /* MessagePack-framework Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MessagePack-framework Tests-Info.plist"; sourceTree = "<group>"; };
+		9AE2E5AB197DBA5D003D23B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AE2E5AD197DBA5D003D23B6 /* MessagePack_framework_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagePack_framework_Tests.m; sourceTree = "<group>"; };
+		9AE2E5AF197DBA5D003D23B6 /* MessagePack-framework Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagePack-framework Tests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +106,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9AE2E5A2197DBA5D003D23B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE2E5A6197DBA5D003D23B6 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +122,7 @@
 			children = (
 				9AE2E529197DB484003D23B6 /* Sources */,
 				9AE2E554197DB4D6003D23B6 /* MessagePack-framework */,
+				9AE2E5A7197DBA5D003D23B6 /* MessagePack-framework Tests */,
 				9A3C20F9197DB25600A86F36 /* Frameworks */,
 				9A3C20F8197DB25600A86F36 /* Products */,
 			);
@@ -93,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				9AE2E552197DB4D6003D23B6 /* MessagePack.framework */,
+				9AE2E5A5197DBA5D003D23B6 /* MessagePack-framework Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +174,8 @@
 				9AE2E54A197DB492003D23B6 /* NSData+MessagePack.m */,
 				9AE2E54B197DB492003D23B6 /* NSDictionary+MessagePack.h */,
 				9AE2E54C197DB492003D23B6 /* NSDictionary+MessagePack.m */,
+				9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */,
+				9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -192,6 +234,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9AE2E5A7197DBA5D003D23B6 /* MessagePack-framework Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9AE2E5AD197DBA5D003D23B6 /* MessagePack_framework_Tests.m */,
+				9AE2E5A8197DBA5D003D23B6 /* Supporting Files */,
+			);
+			path = "MessagePack-framework Tests";
+			sourceTree = "<group>";
+		};
+		9AE2E5A8197DBA5D003D23B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AE2E5A9197DBA5D003D23B6 /* MessagePack-framework Tests-Info.plist */,
+				9AE2E5AA197DBA5D003D23B6 /* InfoPlist.strings */,
+				9AE2E5AF197DBA5D003D23B6 /* MessagePack-framework Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -199,6 +260,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE2E595197DB73C003D23B6 /* MessagePack.h in Headers */,
+				9AE2E596197DB73C003D23B6 /* MessagePackPacker.h in Headers */,
+				9AE2E597197DB73C003D23B6 /* MessagePackParser.h in Headers */,
+				9AE2E598197DB73C003D23B6 /* MessagePackParser+Streaming.h in Headers */,
+				9AE2E599197DB73C003D23B6 /* NSArray+MessagePack.h in Headers */,
+				9AE2E59A197DB73C003D23B6 /* NSData+MessagePack.h in Headers */,
+				9AE2E59B197DB73C003D23B6 /* NSDictionary+MessagePack.h in Headers */,
+				9AE2E59C197DB8A1003D23B6 /* msgpack.h in Headers */,
+				9AE2E59F197DB8FB003D23B6 /* NSString+MessagePack.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +293,24 @@
 			productReference = 9AE2E552197DB4D6003D23B6 /* MessagePack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		9AE2E5A4197DBA5D003D23B6 /* MessagePack-framework Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AE2E5B2197DBA5D003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework Tests" */;
+			buildPhases = (
+				9AE2E5A1197DBA5D003D23B6 /* Sources */,
+				9AE2E5A2197DBA5D003D23B6 /* Frameworks */,
+				9AE2E5A3197DBA5D003D23B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AE2E5B1197DBA5D003D23B6 /* PBXTargetDependency */,
+			);
+			name = "MessagePack-framework Tests";
+			productName = "MessagePack-framework Tests";
+			productReference = 9AE2E5A5197DBA5D003D23B6 /* MessagePack-framework Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -231,6 +319,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Charles Francoise";
+				TargetAttributes = {
+					9AE2E5A4197DBA5D003D23B6 = {
+						TestTargetID = 9AE2E551197DB4D6003D23B6;
+					};
+				};
 			};
 			buildConfigurationList = 9A3C20F1197DB25600A86F36 /* Build configuration list for PBXProject "MessagePack" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -245,6 +338,7 @@
 			projectRoot = "";
 			targets = (
 				9AE2E551197DB4D6003D23B6 /* MessagePack-framework */,
+				9AE2E5A4197DBA5D003D23B6 /* MessagePack-framework Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +352,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9AE2E5A3197DBA5D003D23B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE2E5AC197DBA5D003D23B6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -265,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE2E5A0197DB8FB003D23B6 /* NSString+MessagePack.m in Sources */,
 				9AE2E590197DB604003D23B6 /* objectc.c in Sources */,
 				9AE2E591197DB604003D23B6 /* unpack.c in Sources */,
 				9AE2E592197DB604003D23B6 /* version.c in Sources */,
@@ -279,13 +382,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9AE2E5A1197DBA5D003D23B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE2E5AE197DBA5D003D23B6 /* MessagePack_framework_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AE2E5B1197DBA5D003D23B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AE2E551197DB4D6003D23B6 /* MessagePack-framework */;
+			targetProxy = 9AE2E5B0197DBA5D003D23B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9AE2E557197DB4D6003D23B6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9AE2E558197DB4D6003D23B6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9AE2E5AA197DBA5D003D23B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AE2E5AB197DBA5D003D23B6 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -403,6 +530,40 @@
 			};
 			name = Release;
 		};
+		9AE2E5B3197DBA5D003D23B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-framework Tests/MessagePack-framework Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MessagePack-framework Tests/MessagePack-framework Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9AE2E5B4197DBA5D003D23B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-framework Tests/MessagePack-framework Tests-Prefix.pch";
+				INFOPLIST_FILE = "MessagePack-framework Tests/MessagePack-framework Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -420,6 +581,14 @@
 			buildConfigurations = (
 				9AE2E571197DB4D7003D23B6 /* Debug */,
 				9AE2E572197DB4D7003D23B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9AE2E5B2197DBA5D003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AE2E5B3197DBA5D003D23B6 /* Debug */,
+				9AE2E5B4197DBA5D003D23B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
