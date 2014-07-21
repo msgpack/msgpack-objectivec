@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A3C2129197DB29000A86F36"
+               BlueprintIdentifier = "9AE2E551197DB4D6003D23B6"
                BuildableName = "MessagePack-framework.framework"
                BlueprintName = "MessagePack-framework"
                ReferencedContainer = "container:MessagePack.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A3C2139197DB29000A86F36"
+               BlueprintIdentifier = "9AE2E579197DB51D003D23B6"
                BuildableName = "MessagePack-frameworkTests.xctest"
                BlueprintName = "MessagePack-frameworkTests"
                ReferencedContainer = "container:MessagePack.xcodeproj">

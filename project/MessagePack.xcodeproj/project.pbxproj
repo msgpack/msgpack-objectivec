@@ -6,6 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9AE2E553197DB4D6003D23B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C20FA197DB25600A86F36 /* Cocoa.framework */; };
+		9AE2E559197DB4D6003D23B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2E557197DB4D6003D23B6 /* InfoPlist.strings */; };
+		9AE2E58A197DB5FB003D23B6 /* MessagePackPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E52C197DB492003D23B6 /* MessagePackPacker.m */; };
+		9AE2E58B197DB5FB003D23B6 /* MessagePackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E52E197DB492003D23B6 /* MessagePackParser.m */; };
+		9AE2E58C197DB5FB003D23B6 /* MessagePackParser+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E530197DB492003D23B6 /* MessagePackParser+Streaming.m */; };
+		9AE2E58D197DB5FB003D23B6 /* NSArray+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E548197DB492003D23B6 /* NSArray+MessagePack.m */; };
+		9AE2E58E197DB5FB003D23B6 /* NSData+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E54A197DB492003D23B6 /* NSData+MessagePack.m */; };
+		9AE2E58F197DB5FB003D23B6 /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E54C197DB492003D23B6 /* NSDictionary+MessagePack.m */; };
+		9AE2E590197DB604003D23B6 /* objectc.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E542197DB492003D23B6 /* objectc.c */; };
+		9AE2E591197DB604003D23B6 /* unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E543197DB492003D23B6 /* unpack.c */; };
+		9AE2E592197DB604003D23B6 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E544197DB492003D23B6 /* version.c */; };
+		9AE2E593197DB604003D23B6 /* vrefbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E545197DB492003D23B6 /* vrefbuffer.c */; };
+		9AE2E594197DB604003D23B6 /* zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E546197DB492003D23B6 /* zone.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9A3C20FA197DB25600A86F36 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9A3C20FD197DB25600A86F36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -45,13 +61,29 @@
 		9AE2E54A197DB492003D23B6 /* NSData+MessagePack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSData+MessagePack.m"; path = "../NSData+MessagePack.m"; sourceTree = "<group>"; };
 		9AE2E54B197DB492003D23B6 /* NSDictionary+MessagePack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+MessagePack.h"; path = "../NSDictionary+MessagePack.h"; sourceTree = "<group>"; };
 		9AE2E54C197DB492003D23B6 /* NSDictionary+MessagePack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MessagePack.m"; path = "../NSDictionary+MessagePack.m"; sourceTree = "<group>"; };
+		9AE2E552197DB4D6003D23B6 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AE2E556197DB4D6003D23B6 /* MessagePack-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MessagePack-Info.plist"; sourceTree = "<group>"; };
+		9AE2E558197DB4D6003D23B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AE2E55A197DB4D6003D23B6 /* MessagePack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagePack-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AE2E54E197DB4D6003D23B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE2E553197DB4D6003D23B6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		9A3C20ED197DB25600A86F36 = {
 			isa = PBXGroup;
 			children = (
 				9AE2E529197DB484003D23B6 /* Sources */,
+				9AE2E554197DB4D6003D23B6 /* MessagePack-framework */,
 				9A3C20F9197DB25600A86F36 /* Frameworks */,
 				9A3C20F8197DB25600A86F36 /* Products */,
 			);
@@ -60,6 +92,7 @@
 		9A3C20F8197DB25600A86F36 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9AE2E552197DB4D6003D23B6 /* MessagePack.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,7 +174,56 @@
 			path = msgpack;
 			sourceTree = "<group>";
 		};
+		9AE2E554197DB4D6003D23B6 /* MessagePack-framework */ = {
+			isa = PBXGroup;
+			children = (
+				9AE2E555197DB4D6003D23B6 /* Supporting Files */,
+			);
+			path = "MessagePack-framework";
+			sourceTree = "<group>";
+		};
+		9AE2E555197DB4D6003D23B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AE2E556197DB4D6003D23B6 /* MessagePack-Info.plist */,
+				9AE2E557197DB4D6003D23B6 /* InfoPlist.strings */,
+				9AE2E55A197DB4D6003D23B6 /* MessagePack-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9AE2E54F197DB4D6003D23B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9AE2E551197DB4D6003D23B6 /* MessagePack-framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AE2E570197DB4D7003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework" */;
+			buildPhases = (
+				9AE2E54D197DB4D6003D23B6 /* Sources */,
+				9AE2E54E197DB4D6003D23B6 /* Frameworks */,
+				9AE2E54F197DB4D6003D23B6 /* Headers */,
+				9AE2E550197DB4D6003D23B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MessagePack-framework";
+			productName = "MessagePack-framework";
+			productReference = 9AE2E552197DB4D6003D23B6 /* MessagePack.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9A3C20EE197DB25600A86F36 /* Project object */ = {
@@ -162,9 +244,53 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				9AE2E551197DB4D6003D23B6 /* MessagePack-framework */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AE2E550197DB4D6003D23B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE2E559197DB4D6003D23B6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AE2E54D197DB4D6003D23B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE2E590197DB604003D23B6 /* objectc.c in Sources */,
+				9AE2E591197DB604003D23B6 /* unpack.c in Sources */,
+				9AE2E592197DB604003D23B6 /* version.c in Sources */,
+				9AE2E593197DB604003D23B6 /* vrefbuffer.c in Sources */,
+				9AE2E594197DB604003D23B6 /* zone.c in Sources */,
+				9AE2E58A197DB5FB003D23B6 /* MessagePackPacker.m in Sources */,
+				9AE2E58B197DB5FB003D23B6 /* MessagePackParser.m in Sources */,
+				9AE2E58C197DB5FB003D23B6 /* MessagePackParser+Streaming.m in Sources */,
+				9AE2E58D197DB5FB003D23B6 /* NSArray+MessagePack.m in Sources */,
+				9AE2E58E197DB5FB003D23B6 /* NSData+MessagePack.m in Sources */,
+				9AE2E58F197DB5FB003D23B6 /* NSDictionary+MessagePack.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9AE2E557197DB4D6003D23B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AE2E558197DB4D6003D23B6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9A3C211D197DB25600A86F36 /* Debug */ = {
@@ -237,6 +363,46 @@
 			};
 			name = Release;
 		};
+		9AE2E571197DB4D7003D23B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-framework/MessagePack-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../msgpack_src",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = "MessagePack-framework/MessagePack-Info.plist";
+				PRODUCT_NAME = MessagePack;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		9AE2E572197DB4D7003D23B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-framework/MessagePack-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../msgpack_src",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = "MessagePack-framework/MessagePack-Info.plist";
+				PRODUCT_NAME = MessagePack;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -248,6 +414,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9AE2E570197DB4D7003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AE2E571197DB4D7003D23B6 /* Debug */,
+				9AE2E572197DB4D7003D23B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
