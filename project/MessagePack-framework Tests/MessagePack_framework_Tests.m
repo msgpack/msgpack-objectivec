@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
+#import <MessagePack/MessagePack.h>
+
 @interface MessagePack_framework_Tests : XCTestCase
 
 @end
@@ -26,9 +28,38 @@
     [super tearDown];
 }
 
-- (void)testPackArray
+- (void)testArray
 {
+    NSArray* arr = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9];
     
+    NSData* packedArr = [arr messagePack];
+    XCTAssert(packedArr != nil, @"Could not pack test array. (Test array = %@)", arr);
+    static const unsigned char arrData[] = {0x9a, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
+    XCTAssert(memcmp(arrData, packedArr.bytes, packedArr.length) == 0,
+              @"Packed array is not equal to expected data. (Packed data = %@, Expected data = %@)", packedArr, [NSData dataWithBytesNoCopy:arrData length:11]);
+    
+    NSArray* arr2 = [packedArr messagePackParse];
+    XCTAssert(arr2 != nil, @"Could not parse packed data. (Packed data = %@)", packedArr);
+    
+    XCTAssert([arr2 isKindOfClass:[NSArray class]], @"Unpacked object is not an array. (Unpacked object = %@)", arr2);
+    XCTAssert([arr isEqualToArray:arr2], @"Test array is different from unpacked array. (Test array = %@, Unpacked array = %@)", arr, arr2);
+}
+
+- (void)testDictionary
+{
+    NSDictionary* arr = @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9];
+    
+    NSData* packedArr = [arr messagePack];
+    XCTAssert(packedArr != nil, @"Could not pack test array. (Test array = %@)", arr);
+    static const unsigned char arrData[] = {0x9a, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
+    XCTAssert(memcmp(arrData, packedArr.bytes, packedArr.length) == 0,
+              @"Packed array is not equal to expected data. (Packed data = %@, Expected data = %@)", packedArr, [NSData dataWithBytesNoCopy:arrData length:11]);
+    
+    NSArray* arr2 = [packedArr messagePackParse];
+    XCTAssert(arr2 != nil, @"Could not parse packed data. (Packed data = %@)", packedArr);
+    
+    XCTAssert([arr2 isKindOfClass:[NSArray class]], @"Unpacked object is not an array. (Unpacked object = %@)", arr2);
+    XCTAssert([arr isEqualToArray:arr2], @"Test array is different from unpacked array. (Test array = %@, Unpacked array = %@)", arr, arr2);
 }
 
 @end
