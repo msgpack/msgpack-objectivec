@@ -25,8 +25,6 @@
 		9AE2E59F197DB8FB003D23B6 /* NSString+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AE2E5A0197DB8FB003D23B6 /* NSString+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */; };
 		9AE2E5A6197DBA5D003D23B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C210F197DB25600A86F36 /* XCTest.framework */; };
-		9AE2E5AC197DBA5D003D23B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2E5AA197DBA5D003D23B6 /* InfoPlist.strings */; };
-		9AE2E5AE197DBA5D003D23B6 /* MessagePack_framework_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5AD197DBA5D003D23B6 /* MessagePack_framework_Tests.m */; };
 		9AE2E5DF197DBFBD003D23B6 /* objectc.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D3197DBF9C003D23B6 /* objectc.c */; };
 		9AE2E5E0197DBFBD003D23B6 /* unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D4197DBF9C003D23B6 /* unpack.c */; };
 		9AE2E5E1197DBFBD003D23B6 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D5197DBF9C003D23B6 /* version.c */; };
@@ -37,6 +35,7 @@
 		9AE2E607197DC7D6003D23B6 /* NSNumber+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E605197DC7D6003D23B6 /* NSNumber+MessagePack.m */; };
 		9AE2E60A197DC8E1003D23B6 /* NSNull+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E608197DC8E1003D23B6 /* NSNull+MessagePack.h */; };
 		9AE2E60B197DC8E1003D23B6 /* NSNull+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E609197DC8E1003D23B6 /* NSNull+MessagePack.m */; };
+		9AE2E613197DD3F0003D23B6 /* MessagePack_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E611197DD3CC003D23B6 /* MessagePack_Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +74,6 @@
 		9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MessagePack.h"; path = "../NSString+MessagePack.h"; sourceTree = "<group>"; };
 		9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MessagePack.m"; path = "../NSString+MessagePack.m"; sourceTree = "<group>"; };
 		9AE2E5A5197DBA5D003D23B6 /* MessagePack-framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePack-framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AE2E5A9197DBA5D003D23B6 /* MessagePack-framework Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MessagePack-framework Tests-Info.plist"; sourceTree = "<group>"; };
-		9AE2E5AB197DBA5D003D23B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9AE2E5AD197DBA5D003D23B6 /* MessagePack_framework_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagePack_framework_Tests.m; sourceTree = "<group>"; };
-		9AE2E5AF197DBA5D003D23B6 /* MessagePack-framework Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagePack-framework Tests-Prefix.pch"; sourceTree = "<group>"; };
 		9AE2E5D2197DBF9C003D23B6 /* msgpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = msgpack.h; path = ../msgpack_src/msgpack.h; sourceTree = "<group>"; };
 		9AE2E5D3197DBF9C003D23B6 /* objectc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = objectc.c; path = ../msgpack_src/objectc.c; sourceTree = "<group>"; };
 		9AE2E5D4197DBF9C003D23B6 /* unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unpack.c; path = ../msgpack_src/unpack.c; sourceTree = "<group>"; };
@@ -103,6 +98,10 @@
 		9AE2E605197DC7D6003D23B6 /* NSNumber+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+MessagePack.m"; path = "../NSNumber+MessagePack.m"; sourceTree = "<group>"; };
 		9AE2E608197DC8E1003D23B6 /* NSNull+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNull+MessagePack.h"; path = "../NSNull+MessagePack.h"; sourceTree = "<group>"; };
 		9AE2E609197DC8E1003D23B6 /* NSNull+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNull+MessagePack.m"; path = "../NSNull+MessagePack.m"; sourceTree = "<group>"; };
+		9AE2E60E197DD3CC003D23B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9AE2E60F197DD3CC003D23B6 /* MessagePackTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MessagePackTests-Info.plist"; sourceTree = "<group>"; };
+		9AE2E610197DD3CC003D23B6 /* MessagePackTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagePackTests-Prefix.pch"; sourceTree = "<group>"; };
+		9AE2E611197DD3CC003D23B6 /* MessagePack_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagePack_Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +130,7 @@
 			children = (
 				9AE2E529197DB484003D23B6 /* Sources */,
 				9AE2E554197DB4D6003D23B6 /* MessagePack-framework */,
-				9AE2E5A7197DBA5D003D23B6 /* MessagePack-framework Tests */,
+				9AE2E60C197DD3CC003D23B6 /* MessagePackTests */,
 				9A3C20F9197DB25600A86F36 /* Frameworks */,
 				9A3C20F8197DB25600A86F36 /* Products */,
 			);
@@ -211,25 +210,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9AE2E5A7197DBA5D003D23B6 /* MessagePack-framework Tests */ = {
-			isa = PBXGroup;
-			children = (
-				9AE2E5AD197DBA5D003D23B6 /* MessagePack_framework_Tests.m */,
-				9AE2E5A8197DBA5D003D23B6 /* Supporting Files */,
-			);
-			path = "MessagePack-framework Tests";
-			sourceTree = "<group>";
-		};
-		9AE2E5A8197DBA5D003D23B6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9AE2E5A9197DBA5D003D23B6 /* MessagePack-framework Tests-Info.plist */,
-				9AE2E5AA197DBA5D003D23B6 /* InfoPlist.strings */,
-				9AE2E5AF197DBA5D003D23B6 /* MessagePack-framework Tests-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		9AE2E5D0197DBF8A003D23B6 /* msgpack_src */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +244,25 @@
 			);
 			name = msgpack;
 			path = ../msgpack_src/msgpack;
+			sourceTree = "<group>";
+		};
+		9AE2E60C197DD3CC003D23B6 /* MessagePackTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AE2E612197DD3D5003D23B6 /* Supporting files */,
+				9AE2E611197DD3CC003D23B6 /* MessagePack_Tests.m */,
+			);
+			path = MessagePackTests;
+			sourceTree = "<group>";
+		};
+		9AE2E612197DD3D5003D23B6 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				9AE2E60F197DD3CC003D23B6 /* MessagePackTests-Info.plist */,
+				9AE2E60D197DD3CC003D23B6 /* InfoPlist.strings */,
+				9AE2E610197DD3CC003D23B6 /* MessagePackTests-Prefix.pch */,
+			);
+			name = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,7 +369,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AE2E5AC197DBA5D003D23B6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AE2E5AE197DBA5D003D23B6 /* MessagePack_framework_Tests.m in Sources */,
+				9AE2E613197DD3F0003D23B6 /* MessagePack_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +423,10 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9AE2E5AA197DBA5D003D23B6 /* InfoPlist.strings */ = {
+		9AE2E60D197DD3CC003D23B6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9AE2E5AB197DBA5D003D23B6 /* en */,
+				9AE2E60E197DD3CC003D23B6 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -554,12 +552,12 @@
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MessagePack-framework Tests/MessagePack-framework Tests-Prefix.pch";
+				GCC_PREFIX_HEADER = "MessagePackTests/MessagePackTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "MessagePack-framework Tests/MessagePack-framework Tests-Info.plist";
+				INFOPLIST_FILE = "MessagePackTests/MessagePackTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -573,8 +571,8 @@
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MessagePack-framework Tests/MessagePack-framework Tests-Prefix.pch";
-				INFOPLIST_FILE = "MessagePack-framework Tests/MessagePack-framework Tests-Info.plist";
+				GCC_PREFIX_HEADER = "MessagePackTests/MessagePackTests-Prefix.pch";
+				INFOPLIST_FILE = "MessagePackTests/MessagePackTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -599,6 +597,7 @@
 				9AE2E572197DB4D7003D23B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9AE2E5B2197DBA5D003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework Tests" */ = {
 			isa = XCConfigurationList;
@@ -607,6 +606,7 @@
 				9AE2E5B4197DBA5D003D23B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

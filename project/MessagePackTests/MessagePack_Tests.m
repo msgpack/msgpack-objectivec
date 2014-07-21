@@ -1,6 +1,6 @@
 //
-//  MessagePack_framework_Tests.m
-//  MessagePack-framework Tests
+//  MessagePack_Tests.m
+//  MessagePack Tests
 //
 //  Created by Charles Francoise on 21/07/14.
 //  Copyright (c) 2014 Charles Francoise. All rights reserved.
@@ -10,11 +10,11 @@
 
 #import <MessagePack/MessagePack.h>
 
-@interface MessagePack_framework_Tests : XCTestCase
+@interface MessagePack_Tests : XCTestCase
 
 @end
 
-@implementation MessagePack_framework_Tests
+@implementation MessagePack_Tests
 
 - (void)setUp
 {
