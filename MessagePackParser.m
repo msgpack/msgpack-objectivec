@@ -7,8 +7,14 @@
 //
 
 #import "MessagePackParser.h"
+#include "msgpack.h"
 
-@implementation MessagePackParser
+@implementation MessagePackParser {
+    // This is only for MessagePackParser+Streaming category.
+    msgpack_unpacker _unpacker;
+}
+
+@dynamic unpacker;
 
 // This function returns a parsed object that you have the responsibility to release/autorelease (see 'create rule' in apple docs)
 +(id) createUnpackedObject:(msgpack_object)obj {
@@ -80,6 +86,11 @@
 #else
     return results;
 #endif
+}
+
+- (msgpack_unpacker *)unpacker
+{
+    return &_unpacker;
 }
 
 @end

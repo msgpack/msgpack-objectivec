@@ -7,6 +7,7 @@
 //
 
 #import "MessagePackParser+Streaming.h"
+#include "msgpack.h"
 
 static const int kUnpackerBufferSize = 1024;
 
@@ -23,16 +24,17 @@ static const int kUnpackerBufferSize = 1024;
 
 - (id)initWithBufferSize:(int)bufferSize {
     if (self = [super init]) {
-        msgpack_unpacker_init(&unpacker, bufferSize);
+        msgpack_unpacker_init(self.unpacker, bufferSize);
     }
     return self;
 }
 
 // Feed chunked messagepack data into buffer.
 - (void)feed:(NSData*)chunk {
-    msgpack_unpacker_reserve_buffer(&unpacker, [chunk length]);
-    memcpy(msgpack_unpacker_buffer(&unpacker), [chunk bytes], [chunk length]);
-    msgpack_unpacker_buffer_consumed(&unpacker, [chunk length]);
+    msgpack_unpacker* unpacker = self.unpacker;
+    msgpack_unpacker_reserve_buffer(unpacker, [chunk length]);
+    memcpy(msgpack_unpacker_buffer(unpacker), [chunk bytes], [chunk length]);
+    msgpack_unpacker_buffer_consumed(unpacker, [chunk length]);
 }
 
 // Put next parsed messagepack data. If there is not sufficient data, return nil.
@@ -40,7 +42,7 @@ static const int kUnpackerBufferSize = 1024;
     id unpackedObject;
     msgpack_unpacked result;
     msgpack_unpacked_init(&result);
-    if (msgpack_unpacker_next(&unpacker, &result)) {
+    if (msgpack_unpacker_next(self.unpacker, &result)) {
         msgpack_object obj = result.data;
         unpackedObject = [MessagePackParser createUnpackedObject:obj];
     }
