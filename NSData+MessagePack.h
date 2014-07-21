@@ -11,7 +11,7 @@
 // Adds MessagePack parsing to NSData
 @interface NSData (NSData_MessagePack)
 
-// Parses the receiver's data into a message pack array or dictionary
+// Parses the receiver's data into a message pack array, dictionary or string
 - (id)messagePackParse;
 
 @end

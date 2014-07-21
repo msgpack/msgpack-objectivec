@@ -72,9 +72,14 @@
 		}
 	} else if ([obj isKindOfClass:[NSString class]]) {
 		const char *str = ((NSString*)obj).UTF8String;
-		int len = strlen(str);
-		msgpack_pack_raw(pk, len);
-		msgpack_pack_raw_body(pk, str, len);
+		unsigned long len = strlen(str);
+		msgpack_pack_str(pk, len);
+		msgpack_pack_str_body(pk, str, len);
+	} else if ([obj isKindOfClass:[NSData class]]) {
+		const char *buf = ((NSData*)obj).bytes;
+		unsigned long len = ((NSData*)obj).length;
+		msgpack_pack_bin(pk, len);
+		msgpack_pack_bin_body(pk, buf, len);
 	} else if ([obj isKindOfClass:[NSNumber class]]) {
 		[self packNumber:obj into:pk];
 	} else if (obj==[NSNull null]) {

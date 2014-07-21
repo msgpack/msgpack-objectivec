@@ -25,8 +25,11 @@
         case MSGPACK_OBJECT_DOUBLE:
             return [[NSNumber alloc] initWithDouble:obj.via.dec];
             break;
-        case MSGPACK_OBJECT_RAW:
-            return [[NSString alloc] initWithBytes:obj.via.raw.ptr length:obj.via.raw.size encoding:NSUTF8StringEncoding];
+        case MSGPACK_OBJECT_STR:
+            return [[NSString alloc] initWithBytes:obj.via.str.ptr length:obj.via.str.size encoding:NSUTF8StringEncoding];
+            break;
+        case MSGPACK_OBJECT_BIN:
+            return [[NSData alloc] initWithBytes:obj.via.bin.ptr length:obj.via.bin.size];
             break;
         case MSGPACK_OBJECT_ARRAY:
         {
