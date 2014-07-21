@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A7F0C85197DD4B600BA923E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C20FA197DB25600A86F36 /* Cocoa.framework */; };
+		9A7F0C91197DD4B600BA923E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C210F197DB25600A86F36 /* XCTest.framework */; };
+		9A7F0C92197DD4B600BA923E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C20FA197DB25600A86F36 /* Cocoa.framework */; };
+		9A7F0C95197DD4B600BA923E /* MessagePack.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7F0C84197DD4B600BA923E /* MessagePack.dylib */; };
+		9A7F0CA4197DD56900BA923E /* MessagePack_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E611197DD3CC003D23B6 /* MessagePack_Tests.m */; };
+		9A7F0CA5197DD5A200BA923E /* MessagePackPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E52C197DB492003D23B6 /* MessagePackPacker.m */; };
+		9A7F0CA6197DD5A200BA923E /* MessagePackParser+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E530197DB492003D23B6 /* MessagePackParser+Streaming.m */; };
+		9A7F0CA7197DD5A200BA923E /* MessagePackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E52E197DB492003D23B6 /* MessagePackParser.m */; };
+		9A7F0CA8197DD5A200BA923E /* NSArray+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E548197DB492003D23B6 /* NSArray+MessagePack.m */; };
+		9A7F0CA9197DD5A200BA923E /* NSData+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E54A197DB492003D23B6 /* NSData+MessagePack.m */; };
+		9A7F0CAA197DD5A200BA923E /* NSDictionary+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E54C197DB492003D23B6 /* NSDictionary+MessagePack.m */; };
+		9A7F0CAB197DD5A200BA923E /* NSNull+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E609197DC8E1003D23B6 /* NSNull+MessagePack.m */; };
+		9A7F0CAC197DD5A200BA923E /* NSNumber+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E605197DC7D6003D23B6 /* NSNumber+MessagePack.m */; };
+		9A7F0CAD197DD5A200BA923E /* NSString+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */; };
+		9A7F0CAE197DD5AA00BA923E /* objectc.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D3197DBF9C003D23B6 /* objectc.c */; };
+		9A7F0CAF197DD5AA00BA923E /* unpack.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D4197DBF9C003D23B6 /* unpack.c */; };
+		9A7F0CB0197DD5AA00BA923E /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D5197DBF9C003D23B6 /* version.c */; };
+		9A7F0CB1197DD5AA00BA923E /* vrefbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D6197DBF9C003D23B6 /* vrefbuffer.c */; };
+		9A7F0CB2197DD5AA00BA923E /* zone.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D7197DBF9C003D23B6 /* zone.c */; };
 		9AE2E553197DB4D6003D23B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C20FA197DB25600A86F36 /* Cocoa.framework */; };
 		9AE2E559197DB4D6003D23B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2E557197DB4D6003D23B6 /* InfoPlist.strings */; };
 		9AE2E58A197DB5FB003D23B6 /* MessagePackPacker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E52C197DB492003D23B6 /* MessagePackPacker.m */; };
@@ -39,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9A7F0C93197DD4B600BA923E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A3C20EE197DB25600A86F36 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A7F0C83197DD4B600BA923E;
+			remoteInfo = "MessagePack-dynamic";
+		};
 		9AE2E5B0197DBA5D003D23B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9A3C20EE197DB25600A86F36 /* Project object */;
@@ -54,6 +80,9 @@
 		9A3C20FE197DB25600A86F36 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9A3C20FF197DB25600A86F36 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9A3C210F197DB25600A86F36 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9A7F0C84197DD4B600BA923E /* MessagePack.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = MessagePack.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A7F0C88197DD4B600BA923E /* MessagePack-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessagePack-Prefix.pch"; sourceTree = "<group>"; };
+		9A7F0C90197DD4B600BA923E /* MessagePack-dynamicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePack-dynamicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE2E52A197DB492003D23B6 /* MessagePack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessagePack.h; path = ../MessagePack.h; sourceTree = "<group>"; };
 		9AE2E52B197DB492003D23B6 /* MessagePackPacker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessagePackPacker.h; path = ../MessagePackPacker.h; sourceTree = "<group>"; };
 		9AE2E52C197DB492003D23B6 /* MessagePackPacker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessagePackPacker.m; path = ../MessagePackPacker.m; sourceTree = "<group>"; };
@@ -105,6 +134,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9A7F0C81197DD4B600BA923E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7F0C85197DD4B600BA923E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A7F0C8D197DD4B600BA923E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7F0C92197DD4B600BA923E /* Cocoa.framework in Frameworks */,
+				9A7F0C91197DD4B600BA923E /* XCTest.framework in Frameworks */,
+				9A7F0C95197DD4B600BA923E /* MessagePack.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE2E54E197DB4D6003D23B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,6 +177,7 @@
 			children = (
 				9AE2E529197DB484003D23B6 /* Sources */,
 				9AE2E554197DB4D6003D23B6 /* MessagePack-framework */,
+				9A7F0C86197DD4B600BA923E /* MessagePack-dynamic */,
 				9AE2E60C197DD3CC003D23B6 /* MessagePackTests */,
 				9A3C20F9197DB25600A86F36 /* Frameworks */,
 				9A3C20F8197DB25600A86F36 /* Products */,
@@ -141,6 +189,8 @@
 			children = (
 				9AE2E552197DB4D6003D23B6 /* MessagePack.framework */,
 				9AE2E5A5197DBA5D003D23B6 /* MessagePack-framework Tests.xctest */,
+				9A7F0C84197DD4B600BA923E /* MessagePack.dylib */,
+				9A7F0C90197DD4B600BA923E /* MessagePack-dynamicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +213,22 @@
 				9A3C20FF197DB25600A86F36 /* AppKit.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9A7F0C86197DD4B600BA923E /* MessagePack-dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				9A7F0C87197DD4B600BA923E /* Supporting Files */,
+			);
+			path = "MessagePack-dynamic";
+			sourceTree = "<group>";
+		};
+		9A7F0C87197DD4B600BA923E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A7F0C88197DD4B600BA923E /* MessagePack-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9AE2E529197DB484003D23B6 /* Sources */ = {
@@ -268,6 +334,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		9A7F0C82197DD4B600BA923E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE2E54F197DB4D6003D23B6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +361,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9A7F0C83197DD4B600BA923E /* MessagePack-dynamic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A7F0C9E197DD4B600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-dynamic" */;
+			buildPhases = (
+				9A7F0C80197DD4B600BA923E /* Sources */,
+				9A7F0C81197DD4B600BA923E /* Frameworks */,
+				9A7F0C82197DD4B600BA923E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MessagePack-dynamic";
+			productName = "MessagePack-dynamic";
+			productReference = 9A7F0C84197DD4B600BA923E /* MessagePack.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		9A7F0C8F197DD4B600BA923E /* MessagePack-dynamicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A7F0CA1197DD4B600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-dynamicTests" */;
+			buildPhases = (
+				9A7F0C8C197DD4B600BA923E /* Sources */,
+				9A7F0C8D197DD4B600BA923E /* Frameworks */,
+				9A7F0C8E197DD4B600BA923E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A7F0C94197DD4B600BA923E /* PBXTargetDependency */,
+			);
+			name = "MessagePack-dynamicTests";
+			productName = "MessagePack-dynamicTests";
+			productReference = 9A7F0C90197DD4B600BA923E /* MessagePack-dynamicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9AE2E551197DB4D6003D23B6 /* MessagePack-framework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AE2E570197DB4D7003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework" */;
@@ -333,6 +441,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Charles Francoise";
 				TargetAttributes = {
+					9A7F0C8F197DD4B600BA923E = {
+						TestTargetID = 9AE2E551197DB4D6003D23B6;
+					};
 					9AE2E5A4197DBA5D003D23B6 = {
 						TestTargetID = 9AE2E551197DB4D6003D23B6;
 					};
@@ -352,11 +463,20 @@
 			targets = (
 				9AE2E551197DB4D6003D23B6 /* MessagePack-framework */,
 				9AE2E5A4197DBA5D003D23B6 /* MessagePack-framework Tests */,
+				9A7F0C83197DD4B600BA923E /* MessagePack-dynamic */,
+				9A7F0C8F197DD4B600BA923E /* MessagePack-dynamicTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9A7F0C8E197DD4B600BA923E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE2E550197DB4D6003D23B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -375,6 +495,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9A7F0C80197DD4B600BA923E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7F0CAE197DD5AA00BA923E /* objectc.c in Sources */,
+				9A7F0CAF197DD5AA00BA923E /* unpack.c in Sources */,
+				9A7F0CB0197DD5AA00BA923E /* version.c in Sources */,
+				9A7F0CB1197DD5AA00BA923E /* vrefbuffer.c in Sources */,
+				9A7F0CB2197DD5AA00BA923E /* zone.c in Sources */,
+				9A7F0CA5197DD5A200BA923E /* MessagePackPacker.m in Sources */,
+				9A7F0CA6197DD5A200BA923E /* MessagePackParser+Streaming.m in Sources */,
+				9A7F0CA7197DD5A200BA923E /* MessagePackParser.m in Sources */,
+				9A7F0CA8197DD5A200BA923E /* NSArray+MessagePack.m in Sources */,
+				9A7F0CA9197DD5A200BA923E /* NSData+MessagePack.m in Sources */,
+				9A7F0CAA197DD5A200BA923E /* NSDictionary+MessagePack.m in Sources */,
+				9A7F0CAB197DD5A200BA923E /* NSNull+MessagePack.m in Sources */,
+				9A7F0CAC197DD5A200BA923E /* NSNumber+MessagePack.m in Sources */,
+				9A7F0CAD197DD5A200BA923E /* NSString+MessagePack.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A7F0C8C197DD4B600BA923E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7F0CA4197DD56900BA923E /* MessagePack_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE2E54D197DB4D6003D23B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +556,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9A7F0C94197DD4B600BA923E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A7F0C83197DD4B600BA923E /* MessagePack-dynamic */;
+			targetProxy = 9A7F0C93197DD4B600BA923E /* PBXContainerItemProxy */;
+		};
 		9AE2E5B1197DBA5D003D23B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9AE2E551197DB4D6003D23B6 /* MessagePack-framework */;
@@ -504,6 +658,82 @@
 			};
 			name = Release;
 		};
+		9A7F0C9F197DD4B600BA923E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-dynamic/MessagePack-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../msgpack_src",
+				);
+				PRODUCT_NAME = MessagePack;
+			};
+			name = Debug;
+		};
+		9A7F0CA0197DD4B600BA923E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-dynamic/MessagePack-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../msgpack_src",
+				);
+				PRODUCT_NAME = MessagePack;
+			};
+			name = Release;
+		};
+		9A7F0CA2197DD4B600BA923E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MessagePack.framework/Versions/A/MessagePack";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-dynamic/MessagePack-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MessagePackTests/MessagePackTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9A7F0CA3197DD4B600BA923E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MessagePack.framework/Versions/A/MessagePack";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MessagePack-dynamic/MessagePack-Prefix.pch";
+				INFOPLIST_FILE = "MessagePackTests/MessagePackTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		9AE2E571197DB4D7003D23B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -547,6 +777,7 @@
 		9AE2E5B3197DBA5D003D23B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MessagePack.framework/Versions/A/MessagePack";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -559,6 +790,7 @@
 				);
 				INFOPLIST_FILE = "MessagePackTests/MessagePackTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -566,6 +798,7 @@
 		9AE2E5B4197DBA5D003D23B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MessagePack.framework/Versions/A/MessagePack";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -574,6 +807,7 @@
 				GCC_PREFIX_HEADER = "MessagePackTests/MessagePackTests-Prefix.pch";
 				INFOPLIST_FILE = "MessagePackTests/MessagePackTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -589,6 +823,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9A7F0C9E197DD4B600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-dynamic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A7F0C9F197DD4B600BA923E /* Debug */,
+				9A7F0CA0197DD4B600BA923E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A7F0CA1197DD4B600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-dynamicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A7F0CA2197DD4B600BA923E /* Debug */,
+				9A7F0CA3197DD4B600BA923E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		9AE2E570197DB4D7003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework" */ = {
 			isa = XCConfigurationList;

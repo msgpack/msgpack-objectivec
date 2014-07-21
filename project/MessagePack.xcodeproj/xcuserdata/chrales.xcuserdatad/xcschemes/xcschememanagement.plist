@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MessagePack-framework.xcscheme_^#shared#^_</key>
+		<key>MessagePack-dynamic.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>MessagePack-framework.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -28,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>9A3C2139197DB29000A86F36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A7F0C83197DD4B600BA923E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A7F0C8F197DD4B600BA923E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
