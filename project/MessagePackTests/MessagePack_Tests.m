@@ -32,7 +32,7 @@
 {
     NSData* packedNull = [[NSNull null] messagePack];
     XCTAssert(packedNull != nil, @"Could not pack nil.");
-    static const unsigned char nullData[] = {0xc0};
+    static unsigned char nullData[] = {0xc0};
     XCTAssert(memcmp(nullData, packedNull.bytes, packedNull.length) == 0,
               @"Packed array is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNull, [NSData dataWithBytesNoCopy:nullData length:1 freeWhenDone:NO]);
     
@@ -48,7 +48,7 @@
     // Can only test unpacking, since Cocoa has no class for Booleans
     NSNumber* tru = [NSNumber numberWithBool:YES];
     
-    static const unsigned char truData[] = {0xc3};
+    static unsigned char truData[] = {0xc3};
     NSData* packedTru = [NSData dataWithBytesNoCopy:truData length:1 freeWhenDone:NO];
     
     NSNumber* tru2 = [packedTru messagePackParse];
@@ -63,7 +63,7 @@
     // Can only test unpacking, since Cocoa has no class for Booleans
     NSNumber* fals = [NSNumber numberWithBool:NO];
     
-    static const unsigned char falsData[] = {0xc2};
+    static unsigned char falsData[] = {0xc2};
     NSData* packedFals = [NSData dataWithBytesNoCopy:falsData length:1 freeWhenDone:NO];
     
     NSNumber* fals2 = [packedFals messagePackParse];
@@ -79,7 +79,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0x2a};
+    static unsigned char numData[] = {0x2a};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:1 freeWhenDone:NO]);
     
@@ -96,7 +96,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xee};
+    static unsigned char numData[] = {0xee};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:1 freeWhenDone:NO]);
     
@@ -113,7 +113,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xcc, 0xd8};
+    static unsigned char numData[] = {0xcc, 0xd8};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:2 freeWhenDone:NO]);
     
@@ -130,7 +130,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xd0, 0xd8};
+    static unsigned char numData[] = {0xd0, 0xd8};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:2 freeWhenDone:NO]);
     
@@ -147,7 +147,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xcd, 0xbe, 0xef};
+    static unsigned char numData[] = {0xcd, 0xbe, 0xef};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:3 freeWhenDone:NO]);
     
@@ -164,7 +164,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xd1, 0xde, 0xad};
+    static unsigned char numData[] = {0xd1, 0xde, 0xad};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:3 freeWhenDone:NO]);
     
@@ -181,7 +181,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xce, 0xbe, 0xef, 0xde, 0xad};
+    static unsigned char numData[] = {0xce, 0xbe, 0xef, 0xde, 0xad};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:5 freeWhenDone:NO]);
     
@@ -198,7 +198,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xd2, 0xde, 0xad, 0xbe, 0xef};
+    static unsigned char numData[] = {0xd2, 0xde, 0xad, 0xbe, 0xef};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:5 freeWhenDone:NO]);
     
@@ -215,7 +215,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xcf, 0x00, 0xef, 0xde, 0xad, 0xbe, 0xef, 0xde, 0xad};
+    static unsigned char numData[] = {0xcf, 0x00, 0xef, 0xde, 0xad, 0xbe, 0xef, 0xde, 0xad};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:9 freeWhenDone:NO]);
     
@@ -232,7 +232,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xd3, 0xde, 0xad, 0xbe, 0xef, 0xde, 0xad, 0xbe, 0xef};
+    static unsigned char numData[] = {0xd3, 0xde, 0xad, 0xbe, 0xef, 0xde, 0xad, 0xbe, 0xef};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:9 freeWhenDone:NO]);
     
@@ -249,7 +249,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xca, 0x42, 0xc7, 0xfa, 0xe1};
+    static unsigned char numData[] = {0xca, 0x42, 0xc7, 0xfa, 0xe1};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:5 freeWhenDone:NO]);
     
@@ -266,7 +266,7 @@
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
-    static const unsigned char numData[] = {0xcb, 0x40, 0x09, 0x21, 0xfb, 0x54, 0x44, 0x2d, 0x18};
+    static unsigned char numData[] = {0xcb, 0x40, 0x09, 0x21, 0xfb, 0x54, 0x44, 0x2d, 0x18};
     XCTAssert(memcmp(numData, packedNum.bytes, packedNum.length) == 0,
               @"Packed number is not equal to expected data. (Packed data = %@, Expected data = %@)", packedNum, [NSData dataWithBytesNoCopy:numData length:9 freeWhenDone:NO]);
     
@@ -285,7 +285,7 @@
     
     NSData* packedData = [data messagePack];
     XCTAssert(packedData != nil, @"Could not pack test data. (Test data = %@)", data);
-    static const unsigned char dataData[] = {0xc4, 0x04, 0xde, 0xad, 0xbe, 0xef};
+    static unsigned char dataData[] = {0xc4, 0x04, 0xde, 0xad, 0xbe, 0xef};
     XCTAssert(memcmp(dataData, packedData.bytes, packedData.length) == 0,
               @"Packed data is not equal to expected data. (Packed data = %@, Expected data = %@)", packedData, [NSData dataWithBytesNoCopy:dataData length:6 freeWhenDone:NO]);
     
@@ -364,7 +364,7 @@
     
     NSData* packedStr = [str messagePack];
     XCTAssert(packedStr != nil, @"Could not pack test string. (Test string = %@)", str);
-    static const unsigned char strData[] = {0xac, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x21};
+    static unsigned char strData[] = {0xac, 0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x21};
     XCTAssert(memcmp(strData, packedStr.bytes, packedStr.length) == 0,
               @"Packed string is not equal to expected data. (Packed data = %@, Expected data = %@)", packedStr, [NSData dataWithBytesNoCopy:strData length:13 freeWhenDone:NO]);
     
@@ -386,7 +386,7 @@
     
     NSData* packedStr = [str messagePack];
     XCTAssert(packedStr != nil, @"Could not pack test string. (Test string = %@)", str);
-    static unsigned char strData[len + 2] = {0xd9, (unsigned char)strlen(testStr)};
+    static unsigned char strData[len + 2] = {0xd9, (unsigned char)(len & 0xff)};
     for (int i = 0; i < len; i += strlen(testStr))
     {
         memcpy(&strData[i+2], testStr, strlen(testStr));
@@ -464,7 +464,7 @@
     
     NSData* packedArr = [arr messagePack];
     XCTAssert(packedArr != nil, @"Could not pack test array. (Test array = %@)", arr);
-    static const unsigned char arrData[] = {0x9a, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
+    static unsigned char arrData[] = {0x9a, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
     XCTAssert(memcmp(arrData, packedArr.bytes, packedArr.length) == 0,
               @"Packed array is not equal to expected data. (Packed data = %@, Expected data = %@)", packedArr, [NSData dataWithBytesNoCopy:arrData length:11 freeWhenDone:NO]);
     
@@ -513,7 +513,7 @@
     
     NSData* packedArr = [arr messagePack];
     XCTAssert(packedArr != nil, @"Could not pack test array. (Test array = %@)", arr);
-    static unsigned char arrData[len+3] = {0xdd, (unsigned char)((len>>24) & 0xff), (unsigned char)((len>>16) & 0xff), (unsigned char)((len>>8) & 0xff), (unsigned char)(len & 0xff), 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
+    static unsigned char arrData[len+5] = {0xdd, (unsigned char)((len>>24) & 0xff), (unsigned char)((len>>16) & 0xff), (unsigned char)((len>>8) & 0xff), (unsigned char)(len & 0xff), 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
     for (int i = 0; i < len; i += 10)
     {
         memcpy(&arrData[i+5], &arrData[5], 10);
@@ -528,15 +528,90 @@
     XCTAssert([arr isEqualToArray:arr2], @"Test array is different from unpacked array. (Test array = %@, Unpacked array = %@)", arr, arr2);
 }
 
-- (void)testDictionary
+- (void)testFixMap
 {
     NSDictionary* dict = @{@"one" : @1, @"two" : @2, @"three" : @3};
     
     NSData* packedDict = [dict messagePack];
     XCTAssert(packedDict != nil, @"Could not pack test dictionary. (Test dictionary = %@)", dict);
-    static const unsigned char dictData[] = {0x83, 0xa3, 0x6f, 0x6e, 0x65, 0x01, 0xa3, 0x74, 0x77, 0x6f, 0x02, 0xa5, 0x74, 0x68, 0x72, 0x65, 0x65, 0x03};
+    static unsigned char dictData[] = {0x83, 0xa3, 0x6f, 0x6e, 0x65, 0x01, 0xa3, 0x74, 0x77, 0x6f, 0x02, 0xa5, 0x74, 0x68, 0x72, 0x65, 0x65, 0x03};
     XCTAssert(memcmp(dictData, packedDict.bytes, packedDict.length) == 0,
-              @"Packed dictionary is not equal to expected data. (Packed data = %@, Expected data = %@)", packedDict, [NSData dataWithBytesNoCopy:dictData length:11 freeWhenDone:NO]);
+              @"Packed dictionary is not equal to expected data. (Packed data = %@, Expected data = %@)", packedDict, [NSData dataWithBytesNoCopy:dictData length:18 freeWhenDone:NO]);
+    
+    NSDictionary* dict2 = [packedDict messagePackParse];
+    XCTAssert(dict2 != nil, @"Could not parse packed data. (Packed data = %@)", packedDict);
+    
+    XCTAssert([dict2 isKindOfClass:[NSDictionary class]], @"Unpacked object is not an dictionary. (Unpacked object = %@)", dict2);
+    XCTAssert([dict isEqualToDictionary:dict2], @"Test dictionary is different from unpacked dictionary. (Test dictionary = %@, Unpacked dictionary = %@)", dict, dict2);
+}
+
+
+- (void)testMap16
+{
+    static const unsigned long len = 1024;
+    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithCapacity:len];
+    for (int i = 0; i < len; i++)
+    {
+        NSString* key = [NSString stringWithFormat:@"%08d", i];
+        NSData* data = [NSData dataWithBytesNoCopy:&i length:sizeof(i) freeWhenDone:NO];
+        NSString* obj = [data base64EncodedStringWithOptions:0];
+        [dict setObject:obj forKey:key];
+    }
+    
+    NSData* packedDict = [dict messagePack];
+    XCTAssert(packedDict != nil, @"Could not pack test dictionary. (Test dictionary = %@)", dict);
+    static unsigned char dictData[(len*18) + 3] = {0xde, (unsigned char)((len>>8) & 0xff), (unsigned char)(len & 0xff)};
+    __block unsigned int i = 3;
+    [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        
+        dictData[i] = (0xa8);
+        memcpy(&dictData[i+1], [key UTF8String], 8);
+        
+        dictData[i + 1 + 8] = 0xa8;
+        memcpy(&dictData[i + 1 + 8 + 1], [obj UTF8String], 8);
+        
+        i += 1 + 8 + 1 + 8;
+    }];
+    
+    XCTAssert(memcmp(dictData, packedDict.bytes, packedDict.length) == 0,
+              @"Packed dictionary is not equal to expected data. (Packed data = %@, Expected data = %@)", packedDict, [NSData dataWithBytesNoCopy:dictData length:((len*18) + 3) freeWhenDone:NO]);
+    
+    NSDictionary* dict2 = [packedDict messagePackParse];
+    XCTAssert(dict2 != nil, @"Could not parse packed data. (Packed data = %@)", packedDict);
+    
+    XCTAssert([dict2 isKindOfClass:[NSDictionary class]], @"Unpacked object is not an dictionary. (Unpacked object = %@)", dict2);
+    XCTAssert([dict isEqualToDictionary:dict2], @"Test dictionary is different from unpacked dictionary. (Test dictionary = %@, Unpacked dictionary = %@)", dict, dict2);
+}
+
+- (void)testMap32
+{
+    static const unsigned long len = 100000;
+    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithCapacity:len];
+    for (int i = 0; i < len; i++)
+    {
+        NSString* key = [NSString stringWithFormat:@"%08d", i];
+        NSData* data = [NSData dataWithBytesNoCopy:&i length:sizeof(i) freeWhenDone:NO];
+        NSString* obj = [data base64EncodedStringWithOptions:0];
+        [dict setObject:obj forKey:key];
+    }
+    
+    NSData* packedDict = [dict messagePack];
+    XCTAssert(packedDict != nil, @"Could not pack test dictionary. (Test dictionary = %@)", dict);
+    static unsigned char dictData[(len*18) + 5] = {0xdf, (unsigned char)((len>>24) & 0xff), (unsigned char)((len>>16) & 0xff), (unsigned char)((len>>8) & 0xff), (unsigned char)(len & 0xff)};
+    __block unsigned int i = 5;
+    [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        
+        dictData[i] = (0xa8);
+        memcpy(&dictData[i+1], [key UTF8String], 8);
+        
+        dictData[i + 1 + 8] = 0xa8;
+        memcpy(&dictData[i + 1 + 8 + 1], [obj UTF8String], 8);
+        
+        i += 1 + 8 + 1 + 8;
+    }];
+    
+    XCTAssert(memcmp(dictData, packedDict.bytes, packedDict.length) == 0,
+              @"Packed dictionary is not equal to expected data. (Packed data = %@, Expected data = %@)", packedDict, [NSData dataWithBytesNoCopy:dictData length:((len*18) + 5) freeWhenDone:NO]);
     
     NSDictionary* dict2 = [packedDict messagePackParse];
     XCTAssert(dict2 != nil, @"Could not parse packed data. (Packed data = %@)", packedDict);
@@ -546,3 +621,4 @@
 }
 
 @end
+
