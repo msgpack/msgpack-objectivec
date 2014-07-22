@@ -277,7 +277,7 @@
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
-- (void)testBinary
+- (void)testBin8
 {
     static const unsigned char testData[] = {0xde, 0xad, 0xbe, 0xef};
     
@@ -286,6 +286,66 @@
     NSData* packedData = [data messagePack];
     XCTAssert(packedData != nil, @"Could not pack test data. (Test data = %@)", data);
     static const unsigned char dataData[] = {0xc4, 0x04, 0xde, 0xad, 0xbe, 0xef};
+    XCTAssert(memcmp(dataData, packedData.bytes, packedData.length) == 0,
+              @"Packed data is not equal to expected data. (Packed data = %@, Expected data = %@)", packedData, [NSData dataWithBytesNoCopy:dataData length:11 freeWhenDone:NO]);
+    
+    NSData* data2 = [packedData messagePackParse];
+    XCTAssert(data2 != nil, @"Could not parse packed data. (Packed data = %@)", packedData);
+    
+    XCTAssert([data2 isKindOfClass:[NSData class]], @"Unpacked object is not an data. (Unpacked object = %@)", data2);
+    XCTAssert([data isEqualToData:data2], @"Test data is different from unpacked data. (Test data = %@, Unpacked data = %@)", data, data2);
+}
+
+- (void)testBin16
+{
+    static const unsigned char testDataSample[] = {0xde, 0xad, 0xbe, 0xef};
+    static unsigned char testData[500];
+    
+    for (int i = 0; i < 500;  i += 4)
+    {
+        memcpy(&testData[i], testDataSample, 4);
+    }
+    
+    NSData* data = [NSData dataWithBytesNoCopy:testData length:500 freeWhenDone:NO];
+    
+    NSData* packedData = [data messagePack];
+    XCTAssert(packedData != nil, @"Could not pack test data. (Test data = %@)", data);
+    static unsigned char dataData[503] = {0xc5, 0x01, 0xf4};
+    for (int i = 0; i < 500;  i += 4)
+    {
+        memcpy(&dataData[i+3], testDataSample, 4);
+    }
+    
+    XCTAssert(memcmp(dataData, packedData.bytes, packedData.length) == 0,
+              @"Packed data is not equal to expected data. (Packed data = %@, Expected data = %@)", packedData, [NSData dataWithBytesNoCopy:dataData length:11 freeWhenDone:NO]);
+    
+    NSData* data2 = [packedData messagePackParse];
+    XCTAssert(data2 != nil, @"Could not parse packed data. (Packed data = %@)", packedData);
+    
+    XCTAssert([data2 isKindOfClass:[NSData class]], @"Unpacked object is not an data. (Unpacked object = %@)", data2);
+    XCTAssert([data isEqualToData:data2], @"Test data is different from unpacked data. (Test data = %@, Unpacked data = %@)", data, data2);
+}
+
+- (void)testBin32
+{
+    static const unsigned char testDataSample[] = {0xde, 0xad, 0xbe, 0xef};
+    static unsigned char testData[100000];
+    
+    for (int i = 0; i < 100000;  i += 4)
+    {
+        memcpy(&testData[i], testDataSample, 4);
+    }
+    
+    NSData* data = [NSData dataWithBytesNoCopy:testData length:100000 freeWhenDone:NO];
+    
+    NSData* packedData = [data messagePack];
+    XCTAssert(packedData != nil, @"Could not pack test data. (Test data = %@)", data);
+    static unsigned char dataData[100005] = {0xc6, 0x00, 0x01, 0x86, 0xa0};
+    for (int i = 0; i < 100000;  i += 4)
+    {
+        memcpy(&dataData[i+5], testDataSample, 4);
+    }
+
     XCTAssert(memcmp(dataData, packedData.bytes, packedData.length) == 0,
               @"Packed data is not equal to expected data. (Packed data = %@, Expected data = %@)", packedData, [NSData dataWithBytesNoCopy:dataData length:11 freeWhenDone:NO]);
     
