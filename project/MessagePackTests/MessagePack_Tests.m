@@ -43,6 +43,36 @@
     XCTAssert(null2 == [NSNull null], @"nil is different from unpacked value. (Unpacked value = %@)", null2);
 }
 
+- (void)testTrue
+{
+    // Can only test unpacking, since Cocoa has no class for Booleans
+    NSNumber* tru = [NSNumber numberWithBool:YES];
+    
+    static const unsigned char truData[] = {0xc3};
+    NSData* packedTru = [NSData dataWithBytesNoCopy:truData length:1 freeWhenDone:NO];
+    
+    NSNumber* tru2 = [packedTru messagePackParse];
+    XCTAssert(tru2 != nil, @"Could not parse packed data. (Packed data = %@)", packedTru);
+    
+    XCTAssert([tru2 isKindOfClass:[NSNumber class]], @"Unpacked object is not YES. (Unpacked object = %@)", tru2);
+    XCTAssert([tru isEqualToNumber:tru2], @"YES is different from unpacked value. (YES = %@, Unpacked value = %@)", tru, tru2);
+}
+
+- (void)testFalse
+{
+    // Can only test unpacking, since Cocoa has no class for Booleans
+    NSNumber* fals = [NSNumber numberWithBool:NO];
+    
+    static const unsigned char falsData[] = {0xc2};
+    NSData* packedFals = [NSData dataWithBytesNoCopy:falsData length:1 freeWhenDone:NO];
+    
+    NSNumber* fals2 = [packedFals messagePackParse];
+    XCTAssert(fals2 != nil, @"Could not parse packed data. (Packed data = %@)", packedFals);
+    
+    XCTAssert([fals2 isKindOfClass:[NSNumber class]], @"Unpacked object is not NO. (Unpacked object = %@)", fals2);
+    XCTAssert([fals isEqualToNumber:fals2], @"NO is different from unpacked value. (NO = %@, Unpacked value = %@)", fals, fals2);
+}
+
 - (void)testPositiveFixint
 {
     NSNumber* num = [NSNumber numberWithUnsignedChar:42];
@@ -56,7 +86,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -73,7 +103,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -90,7 +120,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -107,7 +137,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -124,7 +154,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -141,7 +171,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -158,7 +188,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -175,7 +205,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -192,7 +222,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -209,7 +239,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -226,7 +256,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 
@@ -243,7 +273,7 @@
     NSNumber* num2 = [packedNum messagePackParse];
     XCTAssert(num2 != nil, @"Could not parse packed data. (Packed data = %@)", packedNum);
     
-    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not an number. (Unpacked object = %@)", num2);
+    XCTAssert([num2 isKindOfClass:[NSNumber class]], @"Unpacked object is not a number. (Unpacked object = %@)", num2);
     XCTAssert([num isEqualToNumber:num2], @"Test number is different from unpacked number. (Test number = %@, Unpacked number = %@)", num, num2);
 }
 

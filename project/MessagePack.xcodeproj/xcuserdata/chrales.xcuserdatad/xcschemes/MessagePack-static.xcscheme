@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9A7F0CD0197DD70500BA923E"
-               BuildableName = "libMessagePack-static.a"
+               BuildableName = "libMessagePack.a"
                BlueprintName = "MessagePack-static"
                ReferencedContainer = "container:MessagePack.xcodeproj">
             </BuildableReference>
