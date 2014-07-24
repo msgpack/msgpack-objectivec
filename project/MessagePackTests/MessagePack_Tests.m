@@ -211,7 +211,15 @@
 
 - (void)testUint64
 {
-    NSNumber* num = [NSNumber numberWithUnsignedLong:0x00efdeadbeefdead];
+    NSNumber* num = nil;
+    
+#ifdef __LP64__
+    // 64-bit
+    num = [NSNumber numberWithUnsignedLong:0x00efdeadbeefdead];
+#else
+    // 32-bit
+    num = [NSNumber numberWithUnsignedLongLong:0x00efdeadbeefdead];
+#endif
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
@@ -228,7 +236,15 @@
 
 - (void)testInt64
 {
-    NSNumber* num = [NSNumber numberWithLong:0xdeadbeefdeadbeef];
+    NSNumber* num = nil;
+    
+#ifdef __LP64__
+    // 64-bit
+    num = [NSNumber numberWithLong:0xdeadbeefdeadbeef];
+#else
+    // 32-bit
+    num = [NSNumber numberWithLongLong:0xdeadbeefdeadbeef];
+#endif
     
     NSData* packedNum = [num messagePack];
     XCTAssert(packedNum != nil, @"Could not pack test number. (Test number = %@)", num);
