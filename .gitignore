@@ -1,3 +1,5 @@
 .DS_Store
 DerivedData/
 xcuserdata
+
+/project/MessagePack.xcodeproj/project.xcworkspace/xcshareddata/
