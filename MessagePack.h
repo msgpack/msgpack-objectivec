@@ -7,6 +7,5 @@
 
 #import "MessagePackPacker.h"
 #import "MessagePackParser.h"
-#import "MessagePackParser+Streaming.h"
 
 #endif

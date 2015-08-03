@@ -12,4 +12,9 @@
 
 + (id)parseData:(NSData*)data;
 
+- (id)init;
+- (id)initWithBufferSize:(int)bufferSize;
+- (void)feed:(NSData*)rawData;
+- (id)next;
+
 @end
