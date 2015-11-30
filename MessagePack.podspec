@@ -10,5 +10,5 @@ Pod::Spec.new do |spec|
   spec.source = { :git => "https://github.com/loderunner/msgpack-objectivec.git",
                   :tag => "1.0.0" }
   spec.source_files = "*.{h,m}", "msgpack_src/*.{c,h}", "msgpack_src/msgpack/*.h"
-  spec.requires_arc = false
+  spec.requires_arc = true
 end
