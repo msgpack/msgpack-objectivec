@@ -16,53 +16,55 @@
 
 @dynamic unpacker;
 
-// This function returns a parsed object that you have the responsibility to release/autorelease (see 'create rule' in apple docs)
 +(id) createUnpackedObject:(msgpack_object)obj {
     switch (obj.type) {
         case MSGPACK_OBJECT_BOOLEAN:
-            return [[NSNumber alloc] initWithBool:obj.via.boolean];
+            return [NSNumber numberWithBool:obj.via.boolean];
             break;
         case MSGPACK_OBJECT_POSITIVE_INTEGER:
-            return [[NSNumber alloc] initWithUnsignedLongLong:obj.via.u64];
+            return [NSNumber numberWithUnsignedLongLong:obj.via.u64];
             break;
         case MSGPACK_OBJECT_NEGATIVE_INTEGER:
-            return [[NSNumber alloc] initWithLongLong:obj.via.i64];
+            return [NSNumber numberWithLongLong:obj.via.i64];
             break;
         case MSGPACK_OBJECT_DOUBLE:
-            return [[NSNumber alloc] initWithDouble:obj.via.dec];
+            return [NSNumber numberWithDouble:obj.via.dec];
             break;
         case MSGPACK_OBJECT_STR:
-            return [[NSString alloc] initWithBytes:obj.via.str.ptr length:obj.via.str.size encoding:NSUTF8StringEncoding];
+        {
+            NSString* str = [[NSString alloc] initWithBytes:obj.via.str.ptr length:obj.via.str.size encoding:NSUTF8StringEncoding];
+#if !__has_feature(objc_arc)
+            [str autorelease];
+#endif
+            return str;
+        }
             break;
         case MSGPACK_OBJECT_BIN:
-            return [[NSData alloc] initWithBytes:obj.via.bin.ptr length:obj.via.bin.size];
+            return [NSData dataWithBytes:obj.via.bin.ptr length:obj.via.bin.size];
             break;
         case MSGPACK_OBJECT_ARRAY:
         {
-            NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:obj.via.array.size];
+            NSMutableArray *arr = [NSMutableArray arrayWithCapacity:obj.via.array.size];
             msgpack_object* const pend = obj.via.array.ptr + obj.via.array.size;
             for(msgpack_object *p= obj.via.array.ptr;p < pend;p++){
-				id newArrayItem = [self createUnpackedObject:*p];
-                [arr addObject:newArrayItem];
-#if !__has_feature(objc_arc)
-                [newArrayItem release];
-#endif
+                @autoreleasepool {
+                    id newArrayItem = [self createUnpackedObject:*p];
+                    [arr addObject:newArrayItem];
+                }
             }
             return arr;
         }
             break;
         case MSGPACK_OBJECT_MAP:
         {
-            NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:obj.via.map.size];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:obj.via.map.size];
             msgpack_object_kv* const pend = obj.via.map.ptr + obj.via.map.size;
             for(msgpack_object_kv* p = obj.via.map.ptr; p < pend; p++){
-                id key = [self createUnpackedObject:p->key];
-                id val = [self createUnpackedObject:p->val];
-                [dict setValue:val forKey:key];
-#if !__has_feature(objc_arc)
-				[key release];
-				[val release];
-#endif
+                @autoreleasepool {
+                    id key = [self createUnpackedObject:p->key];
+                    id val = [self createUnpackedObject:p->val];
+                    [dict setValue:val forKey:key];
+                }
             }
             return dict;
         }
@@ -81,11 +83,7 @@
 	bool success = msgpack_unpack_next(&msg, data.bytes, data.length, NULL); // Parse it into C-land
 	id results = success ? [self createUnpackedObject:msg.data] : nil; // Convert from C-land to Obj-c-land
 	msgpack_unpacked_destroy(&msg); // Free the parser
-#if !__has_feature(objc_arc)
-	return [results autorelease];
-#else
     return results;
-#endif
 }
 
 - (msgpack_unpacker *)unpacker

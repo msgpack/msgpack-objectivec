@@ -1057,6 +1057,7 @@
 				9A7F0CA0197DD4B600BA923E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A7F0CA1197DD4B600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-dynamicTests" */ = {
 			isa = XCConfigurationList;
@@ -1065,6 +1066,7 @@
 				9A7F0CA3197DD4B600BA923E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A7F0CEB197DD70600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-static" */ = {
 			isa = XCConfigurationList;
@@ -1073,6 +1075,7 @@
 				9A7F0CED197DD70600BA923E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A7F0CEE197DD70600BA923E /* Build configuration list for PBXNativeTarget "MessagePack-staticTests" */ = {
 			isa = XCConfigurationList;
@@ -1081,6 +1084,7 @@
 				9A7F0CF0197DD70600BA923E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9AE2E570197DB4D7003D23B6 /* Build configuration list for PBXNativeTarget "MessagePack-framework" */ = {
 			isa = XCConfigurationList;
