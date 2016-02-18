@@ -132,12 +132,12 @@
 		9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MessagePack.h"; path = "../NSString+MessagePack.h"; sourceTree = "<group>"; };
 		9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MessagePack.m"; path = "../NSString+MessagePack.m"; sourceTree = "<group>"; };
 		9AE2E5A5197DBA5D003D23B6 /* MessagePack-framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MessagePack-framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AE2E5D2197DBF9C003D23B6 /* msgpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = msgpack.h; path = ../msgpack_src/msgpack.h; sourceTree = "<group>"; };
-		9AE2E5D3197DBF9C003D23B6 /* objectc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = objectc.c; path = ../msgpack_src/objectc.c; sourceTree = "<group>"; };
-		9AE2E5D4197DBF9C003D23B6 /* unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unpack.c; path = ../msgpack_src/unpack.c; sourceTree = "<group>"; };
-		9AE2E5D5197DBF9C003D23B6 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = ../msgpack_src/version.c; sourceTree = "<group>"; };
-		9AE2E5D6197DBF9C003D23B6 /* vrefbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vrefbuffer.c; path = ../msgpack_src/vrefbuffer.c; sourceTree = "<group>"; };
-		9AE2E5D7197DBF9C003D23B6 /* zone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zone.c; path = ../msgpack_src/zone.c; sourceTree = "<group>"; };
+		9AE2E5D2197DBF9C003D23B6 /* msgpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = msgpack.h; path = ../msgpack.h; sourceTree = "<group>"; };
+		9AE2E5D3197DBF9C003D23B6 /* objectc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = objectc.c; path = ../objectc.c; sourceTree = "<group>"; };
+		9AE2E5D4197DBF9C003D23B6 /* unpack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unpack.c; path = ../unpack.c; sourceTree = "<group>"; };
+		9AE2E5D5197DBF9C003D23B6 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = ../version.c; sourceTree = "<group>"; };
+		9AE2E5D6197DBF9C003D23B6 /* vrefbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vrefbuffer.c; path = ../vrefbuffer.c; sourceTree = "<group>"; };
+		9AE2E5D7197DBF9C003D23B6 /* zone.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zone.c; path = ../zone.c; sourceTree = "<group>"; };
 		9AE2E5E6197DC079003D23B6 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
 		9AE2E5E7197DC079003D23B6 /* pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack.h; sourceTree = "<group>"; };
 		9AE2E5E8197DC079003D23B6 /* pack_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack_define.h; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 				9AE2E5F3197DC079003D23B6 /* zone.h */,
 			);
 			name = msgpack;
-			path = ../msgpack_src/msgpack;
+			path = ../msgpack;
 			sourceTree = "<group>";
 		};
 		9AE2E60C197DD3CC003D23B6 /* MessagePackTests */ = {
@@ -774,6 +774,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/..";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -807,6 +808,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/..";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
@@ -823,11 +825,6 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../msgpack_src",
-				);
 				PRODUCT_NAME = MessagePack;
 			};
 			name = Debug;
@@ -839,11 +836,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MessagePack-dynamic/MessagePack-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../msgpack_src",
-				);
 				PRODUCT_NAME = MessagePack;
 			};
 			name = Release;
@@ -897,11 +889,6 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../msgpack_src",
-				);
 				PRODUCT_NAME = MessagePack;
 			};
 			name = Debug;
@@ -911,11 +898,6 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MessagePack-static/MessagePack-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../msgpack_src",
-				);
 				PRODUCT_NAME = MessagePack;
 			};
 			name = Release;
@@ -969,11 +951,6 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MessagePack-framework/MessagePack-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../msgpack_src",
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
 				INFOPLIST_FILE = "MessagePack-framework/MessagePack-Info.plist";
 				PRODUCT_NAME = MessagePack;
 				WRAPPER_EXTENSION = framework;
@@ -989,11 +966,6 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MessagePack-framework/MessagePack-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../msgpack_src",
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
 				INFOPLIST_FILE = "MessagePack-framework/MessagePack-Info.plist";
 				PRODUCT_NAME = MessagePack;
 				WRAPPER_EXTENSION = framework;

@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
                    "Charles Francoise" => "charles.francoise@gmail.com" }
   spec.source = { :git => "https://github.com/loderunner/msgpack-objectivec.git",
                   :tag => "1.0.0" }
-  spec.header_mappings_dir = 'msgpack_src'
-  spec.source_files = "*.{h,m}", "msgpack_src/*.{c,h}", "msgpack_src/**/*/", "msgpack_src/**/*.{c,h}"
+  spec.header_mappings_dir = '.'
+  spec.source_files = "*.{h,m,c}", "msgpack/**/*.{c,h}"
   spec.requires_arc = false
 end
