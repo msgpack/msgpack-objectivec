@@ -3,17 +3,9 @@
  *
  * Copyright (C) 2008-2009 FURUHASHI Sadayuki
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *    Distributed under the Boost Software License, Version 1.0.
+ *    (See accompanying file LICENSE_1_0.txt or copy at
+ *    http://www.boost.org/LICENSE_1_0.txt)
  */
 #ifndef MSGPACK_VREFBUFFER_H
 #define MSGPACK_VREFBUFFER_H
@@ -70,8 +62,10 @@ typedef struct msgpack_vrefbuffer {
 #define MSGPACK_VREFBUFFER_CHUNK_SIZE 8192
 #endif
 
+MSGPACK_DLLEXPORT
 bool msgpack_vrefbuffer_init(msgpack_vrefbuffer* vbuf,
         size_t ref_size, size_t chunk_size);
+MSGPACK_DLLEXPORT
 void msgpack_vrefbuffer_destroy(msgpack_vrefbuffer* vbuf);
 
 static inline msgpack_vrefbuffer* msgpack_vrefbuffer_new(size_t ref_size, size_t chunk_size);
@@ -82,14 +76,18 @@ static inline int msgpack_vrefbuffer_write(void* data, const char* buf, size_t l
 static inline const struct iovec* msgpack_vrefbuffer_vec(const msgpack_vrefbuffer* vref);
 static inline size_t msgpack_vrefbuffer_veclen(const msgpack_vrefbuffer* vref);
 
+MSGPACK_DLLEXPORT
 int msgpack_vrefbuffer_append_copy(msgpack_vrefbuffer* vbuf,
         const char* buf, size_t len);
 
+MSGPACK_DLLEXPORT
 int msgpack_vrefbuffer_append_ref(msgpack_vrefbuffer* vbuf,
         const char* buf, size_t len);
 
+MSGPACK_DLLEXPORT
 int msgpack_vrefbuffer_migrate(msgpack_vrefbuffer* vbuf, msgpack_vrefbuffer* to);
 
+MSGPACK_DLLEXPORT
 void msgpack_vrefbuffer_clear(msgpack_vrefbuffer* vref);
 
 /** @} */

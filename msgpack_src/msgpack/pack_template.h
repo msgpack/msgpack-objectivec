@@ -3,29 +3,23 @@
  *
  * Copyright (C) 2008-2010 FURUHASHI Sadayuki
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *    Distributed under the Boost Software License, Version 1.0.
+ *    (See accompanying file LICENSE_1_0.txt or copy at
+ *    http://www.boost.org/LICENSE_1_0.txt)
  */
 
-#if defined(__LITTLE_ENDIAN__)
+#if MSGPACK_ENDIAN_LITTLE_BYTE
 #define TAKE8_8(d)  ((uint8_t*)&d)[0]
 #define TAKE8_16(d) ((uint8_t*)&d)[0]
 #define TAKE8_32(d) ((uint8_t*)&d)[0]
 #define TAKE8_64(d) ((uint8_t*)&d)[0]
-#elif defined(__BIG_ENDIAN__)
+#elif MSGPACK_ENDIAN_BIG_BYTE
 #define TAKE8_8(d)  ((uint8_t*)&d)[0]
 #define TAKE8_16(d) ((uint8_t*)&d)[1]
 #define TAKE8_32(d) ((uint8_t*)&d)[3]
 #define TAKE8_64(d) ((uint8_t*)&d)[7]
+#else
+#error msgpack-c supports only big endian and little endian
 #endif
 
 #ifndef msgpack_pack_inline_func
@@ -669,7 +663,9 @@ msgpack_pack_inline_func(_double)(msgpack_pack_user x, double d)
     union { double f; uint64_t i; } mem;
     mem.f = d;
     buf[0] = 0xcb;
-#if defined(__arm__) && !(__ARM_EABI__) // arm-oabi
+#if defined(TARGET_OS_IPHONE)
+    // ok
+#elif defined(__arm__) && !(__ARM_EABI__) // arm-oabi
     // https://github.com/msgpack/msgpack-perl/pull/1
     mem.i = (mem.i & 0xFFFFFFFFUL) << 32UL | (mem.i >> 32UL);
 #endif
@@ -778,6 +774,31 @@ msgpack_pack_inline_func(_str_body)(msgpack_pack_user x, const void* b, size_t l
 }
 
 /*
+ * Raw (V4)
+ */
+
+msgpack_pack_inline_func(_v4raw)(msgpack_pack_user x, size_t l)
+{
+    if(l < 32) {
+        unsigned char d = 0xa0 | (uint8_t)l;
+        msgpack_pack_append_buffer(x, &TAKE8_8(d), 1);
+    } else if(l < 65536) {
+        unsigned char buf[3];
+        buf[0] = 0xda; _msgpack_store16(&buf[1], (uint16_t)l);
+        msgpack_pack_append_buffer(x, buf, 3);
+    } else {
+        unsigned char buf[5];
+        buf[0] = 0xdb; _msgpack_store32(&buf[1], (uint32_t)l);
+        msgpack_pack_append_buffer(x, buf, 5);
+    }
+}
+
+msgpack_pack_inline_func(_v4raw_body)(msgpack_pack_user x, const void* b, size_t l)
+{
+    msgpack_pack_append_buffer(x, (const unsigned char*)b, l);
+}
+
+/*
  * Bin
  */
 
@@ -803,6 +824,72 @@ msgpack_pack_inline_func(_bin_body)(msgpack_pack_user x, const void* b, size_t l
     msgpack_pack_append_buffer(x, (const unsigned char*)b, l);
 }
 
+/*
+ * Ext
+ */
+
+msgpack_pack_inline_func(_ext)(msgpack_pack_user x, size_t l, int8_t type)
+{
+    switch(l) {
+    case 1: {
+        unsigned char buf[2];
+        buf[0] = 0xd4;
+        buf[1] = type;
+        msgpack_pack_append_buffer(x, buf, 2);
+    } break;
+    case 2: {
+        unsigned char buf[2];
+        buf[0] = 0xd5;
+        buf[1] = type;
+        msgpack_pack_append_buffer(x, buf, 2);
+    } break;
+    case 4: {
+        unsigned char buf[2];
+        buf[0] = 0xd6;
+        buf[1] = type;
+        msgpack_pack_append_buffer(x, buf, 2);
+    } break;
+    case 8: {
+        unsigned char buf[2];
+        buf[0] = 0xd7;
+        buf[1] = type;
+        msgpack_pack_append_buffer(x, buf, 2);
+    } break;
+    case 16: {
+        unsigned char buf[2];
+        buf[0] = 0xd8;
+        buf[1] = type;
+        msgpack_pack_append_buffer(x, buf, 2);
+    } break;
+    default:
+        if(l < 256) {
+            unsigned char buf[3];
+            buf[0] = 0xc7;
+            buf[1] = (unsigned char)l;
+            buf[2] = type;
+            msgpack_pack_append_buffer(x, buf, 3);
+        } else if(l < 65536) {
+            unsigned char buf[4];
+            buf[0] = 0xc8;
+            _msgpack_store16(&buf[1], l);
+            buf[3] = type;
+            msgpack_pack_append_buffer(x, buf, 4);
+        } else {
+            unsigned char buf[6];
+            buf[0] = 0xc9;
+            _msgpack_store32(&buf[1], l);
+            buf[5] = type;
+            msgpack_pack_append_buffer(x, buf, 6);
+        }
+        break;
+    }
+}
+
+msgpack_pack_inline_func(_ext_body)(msgpack_pack_user x, const void* b, size_t l)
+{
+    msgpack_pack_append_buffer(x, (const unsigned char*)b, l);
+}
+
 #undef msgpack_pack_inline_func
 #undef msgpack_pack_user
 #undef msgpack_pack_append_buffer
@@ -820,4 +907,3 @@ msgpack_pack_inline_func(_bin_body)(msgpack_pack_user x, const void* b, size_t l
 #undef msgpack_pack_real_int16
 #undef msgpack_pack_real_int32
 #undef msgpack_pack_real_int64
-

@@ -27,8 +27,8 @@
         case MSGPACK_OBJECT_NEGATIVE_INTEGER:
             return [NSNumber numberWithLongLong:obj.via.i64];
             break;
-        case MSGPACK_OBJECT_DOUBLE:
-            return [NSNumber numberWithDouble:obj.via.dec];
+        case MSGPACK_OBJECT_FLOAT:
+            return [NSNumber numberWithDouble:obj.via.f64];
             break;
         case MSGPACK_OBJECT_STR:
         {

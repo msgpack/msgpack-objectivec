@@ -3,17 +3,9 @@
  *
  * Copyright (C) 2008-2009 FURUHASHI Sadayuki
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *    Distributed under the Boost Software License, Version 1.0.
+ *    (See accompanying file LICENSE_1_0.txt or copy at
+ *    http://www.boost.org/LICENSE_1_0.txt)
  */
 #ifndef MSGPACK_PACK_H
 #define MSGPACK_PACK_H
@@ -97,8 +89,14 @@ static int msgpack_pack_map(msgpack_packer* pk, size_t n);
 static int msgpack_pack_str(msgpack_packer* pk, size_t l);
 static int msgpack_pack_str_body(msgpack_packer* pk, const void* b, size_t l);
 
+static int msgpack_pack_v4raw(msgpack_packer* pk, size_t l);
+static int msgpack_pack_v4raw_body(msgpack_packer* pk, const void* b, size_t l);
+
 static int msgpack_pack_bin(msgpack_packer* pk, size_t l);
 static int msgpack_pack_bin_body(msgpack_packer* pk, const void* b, size_t l);
+
+static int msgpack_pack_ext(msgpack_packer* pk, size_t l, int8_t type);
+static int msgpack_pack_ext_body(msgpack_packer* pk, const void* b, size_t l);
 
 int msgpack_pack_object(msgpack_packer* pk, msgpack_object d);
 
@@ -147,4 +145,3 @@ inline void msgpack_packer_free(msgpack_packer* pk)
 #endif
 
 #endif /* msgpack/pack.h */
-

@@ -3,17 +3,9 @@
  *
  * Copyright (C) 2008-2009 FURUHASHI Sadayuki
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ *    Distributed under the Boost Software License, Version 1.0.
+ *    (See accompanying file LICENSE_1_0.txt or copy at
+ *    http://www.boost.org/LICENSE_1_0.txt)
  */
 #include "msgpack/zone.h"
 #include <stdlib.h>
@@ -75,23 +67,33 @@ static inline void clear_chunk_list(msgpack_zone_chunk_list* cl, size_t chunk_si
 void* msgpack_zone_malloc_expand(msgpack_zone* zone, size_t size)
 {
     msgpack_zone_chunk_list* const cl = &zone->chunk_list;
+    msgpack_zone_chunk* chunk;
 
     size_t sz = zone->chunk_size;
 
     while(sz < size) {
-        sz *= 2;
+        size_t tmp_sz = sz * 2;
+        if (tmp_sz <= sz) {
+            tmp_sz = size;
+            break;
+        }
+        sz = tmp_sz;
     }
 
-    msgpack_zone_chunk* chunk = (msgpack_zone_chunk*)malloc(
+    chunk = (msgpack_zone_chunk*)malloc(
             sizeof(msgpack_zone_chunk) + sz);
-    if (chunk == NULL)  return NULL;
-    char* ptr = ((char*)chunk) + sizeof(msgpack_zone_chunk);
-    chunk->next = cl->head;
-    cl->head = chunk;
-    cl->free = sz - size;
-    cl->ptr  = ptr + size;
+    if (chunk == NULL) {
+        return NULL;
+    }
+    else {
+        char* ptr = ((char*)chunk) + sizeof(msgpack_zone_chunk);
+        chunk->next = cl->head;
+        cl->head = chunk;
+        cl->free = sz - size;
+        cl->ptr  = ptr + size;
 
-    return ptr;
+        return ptr;
+    }
 }
 
 
@@ -126,6 +128,7 @@ bool msgpack_zone_push_finalizer_expand(msgpack_zone* zone,
         void (*func)(void* data), void* data)
 {
     msgpack_zone_finalizer_array* const fa = &zone->finalizer_array;
+    msgpack_zone_finalizer* tmp;
 
     const size_t nused = (size_t)(fa->end - fa->array);
 
@@ -138,8 +141,7 @@ bool msgpack_zone_push_finalizer_expand(msgpack_zone* zone,
         nnext = nused * 2;
     }
 
-    msgpack_zone_finalizer* tmp =
-        (msgpack_zone_finalizer*)realloc(fa->array,
+    tmp = (msgpack_zone_finalizer*)realloc(fa->array,
                 sizeof(msgpack_zone_finalizer) * nnext);
     if(tmp == NULL) {
         return false;
@@ -195,7 +197,7 @@ bool msgpack_zone_init(msgpack_zone* zone, size_t chunk_size)
 msgpack_zone* msgpack_zone_new(size_t chunk_size)
 {
     msgpack_zone* zone = (msgpack_zone*)malloc(
-            sizeof(msgpack_zone) + chunk_size);
+            sizeof(msgpack_zone));
     if(zone == NULL) {
         return NULL;
     }
@@ -218,4 +220,3 @@ void msgpack_zone_free(msgpack_zone* zone)
     msgpack_zone_destroy(zone);
     free(zone);
 }
-
