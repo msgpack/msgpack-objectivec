@@ -35,14 +35,14 @@
             BOOL lossy = NO;
             NSString* str = nil;
             NSData* strData = [NSData dataWithBytesNoCopy:(void*)obj.via.str.ptr length:obj.via.str.size freeWhenDone:NO];
-            [NSString stringEncodingForData:strData
-                            encodingOptions:@{ NSStringEncodingDetectionSuggestedEncodingsKey : @[@(NSUTF8StringEncoding),
-                                                                                                  @(NSUTF16StringEncoding),
-                                                                                                  @(NSISOLatin1StringEncoding),
-                                                                                                  @(NSWindowsCP1252StringEncoding),
-                                                                                                  @(NSMacOSRomanStringEncoding)] }
-                            convertedString:&str
-                        usedLossyConversion:&lossy];
+            NSStringEncoding encoding = [NSString stringEncodingForData:strData
+                                                        encodingOptions:@{ NSStringEncodingDetectionSuggestedEncodingsKey : @[@(NSUTF8StringEncoding),
+                                                                                                                              @(NSUTF16StringEncoding),
+                                                                                                                              @(NSISOLatin1StringEncoding),
+                                                                                                                              @(NSWindowsCP1252StringEncoding),
+                                                                                                                              @(NSMacOSRomanStringEncoding)] }
+                                                        convertedString:&str
+                                                    usedLossyConversion:&lossy];
 //            NSString* str = [[NSString alloc] initWithBytes:obj.via.str.ptr length:obj.via.str.size encoding:NSUTF8StringEncoding];
             return str;
         }
