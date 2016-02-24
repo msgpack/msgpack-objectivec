@@ -472,6 +472,17 @@
     XCTAssert([str isEqualToString:str2], @"Test string is different from unpacked string. (Test string = %@, Unpacked string = %@)", str, str2);
 }
 
+- (void)testBadStr
+{
+    static unsigned char strData[] = {0xa2, 0xfd, 0xfa};
+    NSData* packedStr = [NSData dataWithBytesNoCopy:(void*)strData
+                                             length:3
+                                       freeWhenDone:NO];
+    
+    NSString* str = [packedStr messagePackParse];
+    XCTAssert(str == nil, @"Parsing invalid UTF-8 string should return nil. (Packed data = %@, Unpacked string = %@)", packedStr, str);
+}
+
 #define testArr @[@0, @1, @2, @3, @4, @5, @6, @7, @8, @9]
 
 - (void)testFixArray

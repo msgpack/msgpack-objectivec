@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2993C71C7C92500097DD61 /* NSString+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A7F0C85197DD4B600BA923E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C20FA197DB25600A86F36 /* Cocoa.framework */; };
 		9A7F0C91197DD4B600BA923E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C210F197DB25600A86F36 /* XCTest.framework */; };
 		9A7F0C92197DD4B600BA923E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C20FA197DB25600A86F36 /* Cocoa.framework */; };
@@ -60,7 +61,6 @@
 		9AE2E599197DB73C003D23B6 /* NSArray+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E547197DB492003D23B6 /* NSArray+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AE2E59A197DB73C003D23B6 /* NSData+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E549197DB492003D23B6 /* NSData+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AE2E59B197DB73C003D23B6 /* NSDictionary+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E54B197DB492003D23B6 /* NSDictionary+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9AE2E59F197DB8FB003D23B6 /* NSString+MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AE2E59D197DB8FB003D23B6 /* NSString+MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AE2E5A0197DB8FB003D23B6 /* NSString+MessagePack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E59E197DB8FB003D23B6 /* NSString+MessagePack.m */; };
 		9AE2E5A6197DBA5D003D23B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3C210F197DB25600A86F36 /* XCTest.framework */; };
 		9AE2E5DF197DBFBD003D23B6 /* objectc.c in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2E5D3197DBF9C003D23B6 /* objectc.c */; };
@@ -420,6 +420,7 @@
 			files = (
 				9AE2E595197DB73C003D23B6 /* MessagePack.h in Headers */,
 				9AE2E596197DB73C003D23B6 /* MessagePackPacker.h in Headers */,
+				9A2993C71C7C92500097DD61 /* NSString+MessagePack.h in Headers */,
 				9AE2E597197DB73C003D23B6 /* MessagePackParser.h in Headers */,
 				9AE2E598197DB73C003D23B6 /* MessagePackParser+Streaming.h in Headers */,
 				9AE2E599197DB73C003D23B6 /* NSArray+MessagePack.h in Headers */,
@@ -427,7 +428,6 @@
 				9AE2E59B197DB73C003D23B6 /* NSDictionary+MessagePack.h in Headers */,
 				9AE2E60A197DC8E1003D23B6 /* NSNull+MessagePack.h in Headers */,
 				9AE2E606197DC7D6003D23B6 /* NSNumber+MessagePack.h in Headers */,
-				9AE2E59F197DB8FB003D23B6 /* NSString+MessagePack.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

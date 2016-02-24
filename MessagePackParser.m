@@ -32,18 +32,10 @@
             break;
         case MSGPACK_OBJECT_STR:
         {
-            BOOL lossy = NO;
-            NSString* str = nil;
-            NSData* strData = [NSData dataWithBytesNoCopy:(void*)obj.via.str.ptr length:obj.via.str.size freeWhenDone:NO];
-            NSStringEncoding encoding = [NSString stringEncodingForData:strData
-                                                        encodingOptions:@{ NSStringEncodingDetectionSuggestedEncodingsKey : @[@(NSUTF8StringEncoding),
-                                                                                                                              @(NSUTF16StringEncoding),
-                                                                                                                              @(NSISOLatin1StringEncoding),
-                                                                                                                              @(NSWindowsCP1252StringEncoding),
-                                                                                                                              @(NSMacOSRomanStringEncoding)] }
-                                                        convertedString:&str
-                                                    usedLossyConversion:&lossy];
-//            NSString* str = [[NSString alloc] initWithBytes:obj.via.str.ptr length:obj.via.str.size encoding:NSUTF8StringEncoding];
+            NSString* str = [[NSString alloc] initWithBytes:obj.via.str.ptr length:obj.via.str.size encoding:NSUTF8StringEncoding];
+#if !__has_feature(objc_arc)
+            [str autorelease];
+#endif
             return str;
         }
             break;
@@ -57,6 +49,10 @@
             for(msgpack_object *p= obj.via.array.ptr;p < pend;p++){
                 @autoreleasepool {
                     id newArrayItem = [self createUnpackedObject:*p];
+                    if (newArrayItem == nil)
+                    {
+                        return nil;
+                    }
                     [arr addObject:newArrayItem];
                 }
             }
@@ -70,7 +66,15 @@
             for(msgpack_object_kv* p = obj.via.map.ptr; p < pend; p++){
                 @autoreleasepool {
                     id key = [self createUnpackedObject:p->key];
+                    if (key == nil)
+                    {
+                        return nil;
+                    }
                     id val = [self createUnpackedObject:p->val];
+                    if (val == nil)
+                    {
+                        return nil;
+                    }
                     [dict setValue:val forKey:key];
                 }
             }
