@@ -6,6 +6,8 @@ In a similar way to the JSON framework, this parses MessagePack into NSDictionar
 This contains a small patch to the C library so that it doesn't segfault with a byte alignment error when running on the iPhone in armv7 mode.
 Please note that the parser has been extensively tested, however the packer has not been. Please get in touch if it has issues.
 
+Link with `libmsgpack-objc` after building with `make`.
+
 Parsing Usage
 -----
 
@@ -29,6 +31,7 @@ Authors
 * Sugendran Ganess
 * Chris Hulbert
 * Bugfixes by Matzo: https://github.com/Matzo
+* Edgar Aroutiounian for Makefiles for building
 
 License
 -------
